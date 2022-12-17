@@ -9,6 +9,10 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { StoreModule } from '@ngrx/store';
+import { HomeComponent } from './views/home/home.component';
+import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
+import { reducers, metaReducers } from './redux/reducers';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -16,7 +20,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent],
+  declarations: [AppComponent, DashboardComponent, HomeComponent, PageNotFoundComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -35,6 +39,9 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient],
       },
+    }),
+    StoreModule.forRoot(reducers, {
+      metaReducers
     }),
   ],
   providers: [],
