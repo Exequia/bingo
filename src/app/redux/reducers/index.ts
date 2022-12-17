@@ -26,3 +26,6 @@ export function debug(reducer: ActionReducer<any>): ActionReducer<any> {
 }
 
 export const metaReducers: MetaReducer<AppState>[] = isDevMode() ? [debug] : [];
+
+
+export const selectConfig = (state: AppState) => state.config;

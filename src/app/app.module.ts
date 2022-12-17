@@ -13,6 +13,8 @@ import { StoreModule } from '@ngrx/store';
 import { HomeComponent } from './views/home/home.component';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
 import { reducers, metaReducers } from './redux/reducers';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { MaterialModule } from './modules/material/material.module';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -20,7 +22,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, HomeComponent, PageNotFoundComponent],
+  declarations: [AppComponent, DashboardComponent, HomeComponent, PageNotFoundComponent, ToolbarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -43,6 +45,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     StoreModule.forRoot(reducers, {
       metaReducers
     }),
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent],

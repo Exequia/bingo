@@ -1,5 +1,17 @@
+<app-toolbar></app-toolbar>
+
+<ng-container *ngIf="progress$ | async; let progress">
+  <mat-progress-bar *ngIf="progress?.loading"
+    class="progress"
+    [color]="progress?.color"
+    [mode]="progress?.mode"
+    [value]="progress?.value"
+    [bufferValue]="progress?.bufferValue"
+  >
+  </mat-progress-bar>
+</ng-container>
+
 <main class="content" role="main">
-  <p>Alberto dice: <span [translate]="'common.yes'"></span></p>
   <router-outlet></router-outlet>
 </main>
 <footer></footer>

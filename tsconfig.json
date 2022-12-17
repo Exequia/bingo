@@ -24,14 +24,15 @@
       "dom"
     ],
     "paths": {
-      "app/*": ["app/*"],
-      "config/*": ["app/_config/*"],
-      "environment/*": ["environments/*"],
-      "state" : ["app/redux/*"],
-      "components" : ["app/components/*"],
-      "models" : ["app/models/*"],
-      "services" : ["app/services/*"],
-      "views" : ["app/views/*"],
+      "@app": ["src/app/*"],
+      "@assets": ["src/assets/*"],
+      "@config/*": ["src/app/_config/*"],
+      "@environment/*": ["environments/*"],
+      "@state/*" : ["src/app/redux/*"],
+      "@components" : ["src/app/components/*"],
+      "@models" : ["src/app/models/*"],
+      "@services" : ["src/app/services/*"],
+      "@views" : ["src/app/views/*"],
     }
   },
   "angularCompilerOptions": {
