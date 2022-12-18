@@ -1,1 +1,25 @@
-<p>new-player-form works!</p>
+<div class="new-player-form">
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>{{ "player.name" | translate }}</mat-label>
+      <input
+        matInput
+        [placeholder]="'player.namePH' | translate"
+        formControlName="name"
+        required
+      />
+      <mat-error *ngIf="profileForm.get('name')?.invalid">{{
+        getErrorMessage()
+      }}</mat-error>
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="!profileForm.valid"
+      type="submit"
+    >
+      {{ "player.connect" | translate }}
+    </button>
+  </form>
+</div>

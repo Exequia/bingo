@@ -10,6 +10,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { StoreModule } from '@ngrx/store';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './views/home/home.component';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
 import { reducers, metaReducers } from './redux/reducers';
@@ -17,6 +18,8 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { MaterialModule } from './modules/material/material.module';
 import { NewPlayerComponent } from './views/new-player/new-player.component';
 import { NewPlayerFormComponent } from './components/new-player-form/new-player-form.component';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -44,6 +47,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     TranslateModule.forRoot({
       defaultLanguage: 'es',
       loader: {
@@ -56,6 +61,8 @@ export function HttpLoaderFactory(http: HttpClient) {
       metaReducers,
     }),
     MaterialModule,
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    EffectsModule.forRoot([]),
   ],
   providers: [],
   bootstrap: [AppComponent],

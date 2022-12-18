@@ -1,10 +1,20 @@
 {
   "common": {
+    "confirm": "Confirmar",
+    "error": {
+      "required": "El campo debe rellenarse"
+    }
   },
   "toolbar": {
     "title": "Vamonos de Bingo"
   },
   "home": {
     "newGame": "Nueva Partida"
+  },
+  "player": {
+    "title": "Conexión para nuevo usuario",
+    "name": "Nombre del Jugador",
+    "namePH": "Introducir nombre",
+    "connect": "Conectarse"
   }
 }

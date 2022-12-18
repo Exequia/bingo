@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { selectPlayerFeature, selectProgressConfig } from './redux';
 import { Store } from '@ngrx/store';
 import { AppState } from './redux';
+import { PlayerFacade } from './redux/facades/playerFacade';
+import { ConfigFacade } from './redux/facades/configFacade';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +11,8 @@ import { AppState } from './redux';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  progress$ = this.store.select(selectProgressConfig);
-  player$ = this.store.select(selectPlayerFeature);
+  progress$ = this.configFacade.progress$;
+  player$ = this.playerFacade.player$;
 
-  constructor(private readonly store: Store<AppState>) {}
+  constructor(private readonly configFacade: ConfigFacade, private readonly playerFacade: PlayerFacade) {}
 }
