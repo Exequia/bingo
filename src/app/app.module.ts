@@ -15,6 +15,8 @@ import { PageNotFoundComponent } from './views/page-not-found/page-not-found.com
 import { reducers, metaReducers } from './redux/reducers';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { MaterialModule } from './modules/material/material.module';
+import { NewPlayerComponent } from './views/new-player/new-player.component';
+import { NewPlayerFormComponent } from './components/new-player-form/new-player-form.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -22,7 +24,15 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, HomeComponent, PageNotFoundComponent, ToolbarComponent],
+  declarations: [
+    AppComponent,
+    DashboardComponent,
+    HomeComponent,
+    PageNotFoundComponent,
+    ToolbarComponent,
+    NewPlayerComponent,
+    NewPlayerFormComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -43,9 +53,9 @@ export function HttpLoaderFactory(http: HttpClient) {
       },
     }),
     StoreModule.forRoot(reducers, {
-      metaReducers
+      metaReducers,
     }),
-    MaterialModule
+    MaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

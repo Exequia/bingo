@@ -1,24 +1,19 @@
 import { isDevMode } from '@angular/core';
-import {
-  ActionReducer,
-  ActionReducerMap,
-  createFeatureSelector,
-  createSelector,
-  MetaReducer
-} from '@ngrx/store';
+import { ActionReducer, ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { AppState } from '../state/appState';
-import { ConfigReducer } from './configReducer';
+import { ConfigReducer as configReducer } from './configReducer';
 import { gameReducer } from './gameReducer';
+import { playerReducer } from './playerReducer';
 
 export const reducers: ActionReducerMap<AppState> = {
-  config: ConfigReducer,
-  game: gameReducer
+  config: configReducer,
+  game: gameReducer,
+  player: playerReducer,
 };
-
 
 // console.log all actions
 export function debug(reducer: ActionReducer<any>): ActionReducer<any> {
-  return function(state, action) {
+  return function (state, action) {
     console.log('state', state);
     console.log('action', action);
     return reducer(state, action);
@@ -27,5 +22,6 @@ export function debug(reducer: ActionReducer<any>): ActionReducer<any> {
 
 export const metaReducers: MetaReducer<AppState>[] = isDevMode() ? [debug] : [];
 
-
-export const selectConfig = (state: AppState) => state.config;
+export const selectConfigFeature = (state: AppState) => state.config;
+export const selectGameFeature = (state: AppState) => state.game;
+export const selectPlayerFeature = (state: AppState) => state.player;

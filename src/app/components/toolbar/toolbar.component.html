@@ -8,6 +8,7 @@
     </button>
     <span [translate]="'toolbar.title'"></span>
     <span class="spacer"></span>
+    <span *ngIf="player?.name">{{player?.name}}</span>
     <button
       mat-icon-button
       class="example-icon"

@@ -1,4 +1,4 @@
-<app-toolbar></app-toolbar>
+<app-toolbar [player]="player$ | async"></app-toolbar>
 
 <ng-container *ngIf="progress$ | async; let progress">
   <mat-progress-bar *ngIf="progress?.loading"

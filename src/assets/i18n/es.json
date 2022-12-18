@@ -1,8 +1,10 @@
 {
   "common": {
-    "yes": "sí"
   },
   "toolbar": {
     "title": "Vamonos de Bingo"
+  },
+  "home": {
+    "newGame": "Nueva Partida"
   }
 }

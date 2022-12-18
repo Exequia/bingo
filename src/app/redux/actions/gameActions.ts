@@ -1,6 +1,5 @@
 import { createAction, props } from '@ngrx/store';
 
-export const initConfigurationGame = createAction('[Game] Init configuration game');
-// export const awayScore = createAction('[Scoreboard Page] Away Score');
-// export const resetScore = createAction('[Scoreboard Page] Score Reset');
-// export const setScores = createAction('[Scoreboard Page] Set Scores', props<{game: Game}>());
+export const INIT_CONFIGURATION_GAME = '[Game] Init configuration game';
+
+export const initConfigurationGame = createAction(INIT_CONFIGURATION_GAME);

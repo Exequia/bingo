@@ -1,5 +1,4 @@
-import { Languages } from 'src/app/models/app';
-import { ProgressConfig } from 'src/app/models/config';
+import { Languages, ProgressConfig } from '@models';
 
 export interface ConfigState {
   language: Languages;

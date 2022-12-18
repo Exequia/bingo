@@ -1,9 +1,9 @@
 import { createAction, props } from '@ngrx/store';
 import { Languages } from '@models';
 
-export const SET_APP_LANGUAGE = '[Config] Set Language';
+export const SET_PLAYER_NAME = '[Player] Set Language'
 
-export const setAppLanguage = createAction(
-  SET_APP_LANGUAGE,
+export const setPlayerName = createAction(
+  SET_PLAYER_NAME,
   props<{ language: Languages }>()
 );

@@ -1,9 +1,9 @@
 import { createSelector } from '@ngrx/store';
-import { AppState, ConfigState } from '../state';
+import { ConfigState } from '../state';
 import { ProgressConfig } from '../../models';
-import { selectConfig } from '..';
- 
+import { selectConfigFeature } from '..';
+
 export const selectProgressConfig = createSelector(
-  selectConfig,
+  selectConfigFeature,
   (state: ConfigState): ProgressConfig => state.progress
 );
