@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GameConfig } from '@app/models';
 import { GameFacade } from '@app/redux/facades/gameFacade';
 
 @Component({
@@ -11,4 +12,8 @@ export class NewGameComponent {
   gamePlayers$ = this.gameFacade.gamePlayers$;
 
   constructor(private readonly gameFacade: GameFacade) {}
+
+  handelGameConfig(gameConfig: GameConfig) {
+    console.log('TODO: iniciar la partida', gameConfig);
+  }
 }

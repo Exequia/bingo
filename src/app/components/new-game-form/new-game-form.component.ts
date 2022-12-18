@@ -15,7 +15,7 @@ export class NewGameFormComponent {
     new EventEmitter<GameConfig>();
 
   gameVelocityValues = this.utils.getEnumNumberValues(GameVelocity);
-  velocityControl = new FormControl<GameVelocity>(GameVelocity.standard);
+  velocityControl = new FormControl<GameVelocity>(GameVelocity.high);
   gameConfigForm = new FormGroup<GameConfigForm>({
     velocity: this.velocityControl,
   });

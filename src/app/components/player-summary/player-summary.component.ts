@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Player } from '@app/models';
+import { GamePlayer } from '@app/models';
 
 @Component({
   selector: 'app-player-summary',
@@ -7,5 +7,5 @@ import { Player } from '@app/models';
   styleUrls: ['./player-summary.component.scss'],
 })
 export class PlayerSummaryComponent {
-  @Input() gamePlayer: Player | undefined | null = undefined;
+  @Input() gamePlayer: GamePlayer | undefined | null = undefined;
 }

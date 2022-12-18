@@ -1,8 +1,6 @@
-import { GameStatus } from '../../models/game';
+import { Player } from '@app/models';
 
-export interface PlayerState {
-  name?: string;
-  amount: number;
+export interface PlayerState extends Player {
 }
 
 export const initialPlayerState: PlayerState = {

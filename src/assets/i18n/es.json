@@ -1,6 +1,7 @@
 {
   "common": {
     "confirm": "Confirmar",
+    "start": "Comenzar",
     "error": {
       "required": "El campo debe rellenarse"
     }
@@ -21,10 +22,10 @@
     "formTitle": "Configuración de opciones de la partida",
     "velocity": "Velocidad",
     "velocities": {
-      "0": "Despacio",
+      "0": "Lenta",
       "1": "Normal",
-      "2": "Rapido"
+      "2": "Rapida"
     },
-    "roomTitle": "Jugadores en linea para la partida"
+    "roomTitle": "Jugadores en linea"
   }
 }

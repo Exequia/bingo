@@ -1,12 +1,11 @@
 import { Component, Input } from '@angular/core';
-import { Player } from '@app/models';
+import { GamePlayer } from '@app/models';
 
 @Component({
   selector: 'app-game-room',
   templateUrl: './game-room.component.html',
-  styleUrls: ['./game-room.component.scss']
+  styleUrls: ['./game-room.component.scss'],
 })
 export class GameRoomComponent {
-  @Input() gamePlayers: Player[] | undefined | null = undefined;
-
+  @Input() gamePlayers: GamePlayer[] | undefined | null = undefined;
 }
