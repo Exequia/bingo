@@ -20,6 +20,7 @@ import { NewPlayerComponent } from './views/new-player/new-player.component';
 import { NewPlayerFormComponent } from './components/new-player-form/new-player-form.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule   } from '@ngrx/router-store';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -63,6 +64,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MaterialModule,
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     EffectsModule.forRoot([]),
+    StoreRouterConnectingModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

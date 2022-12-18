@@ -6,7 +6,7 @@ import { map, exhaustMap, catchError } from 'rxjs/operators';
 import { setPlayerName, SET_PLAYER_NAME } from '../actions';
 
 @Injectable()
-export class MovieEffects {
+export class PlayerEffects {
   constructor(
     private readonly actions$: Actions,
     private readonly playerService: PlayerService
