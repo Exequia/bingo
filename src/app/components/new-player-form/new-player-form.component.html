@@ -1,5 +1,5 @@
 <div class="new-player-form">
-  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <form class="display-grid" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
     <mat-form-field appearance="fill">
       <mat-label>{{ "player.name" | translate }}</mat-label>
       <input
@@ -14,7 +14,8 @@
     </mat-form-field>
 
     <button
-      mat-raised-button
+      mat-fab
+      extended
       color="primary"
       [disabled]="!profileForm.valid"
       type="submit"

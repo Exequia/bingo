@@ -1,2 +1,2 @@
-export * from './configSelector'
-export * from './playerSelector'
+export * from './configSelectors'
+export * from './playerSelectors'

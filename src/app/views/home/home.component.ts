@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterFacade } from '@app/redux/facades/routerFacade';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,9 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  constructor(private readonly routerFacade: RouterFacade) {}
+
   newGame() {
-    alert('empieza una nueva partida');
+    this.routerFacade.navigateTo('game')
   }
 }

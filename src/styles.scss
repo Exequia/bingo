@@ -12,3 +12,7 @@ body {
 button[disabled] {
   cursor: not-allowed !important;
 }
+
+.display-grid {
+  display: inline-grid;
+}

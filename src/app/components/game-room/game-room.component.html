@@ -1,0 +1,8 @@
+<div class="game-room">
+  <ng-container *ngFor="let gamePlayer of gamePlayers">
+    <app-player-summary
+      *ngIf="!!gamePlayer"
+      [gamePlayer]="gamePlayer"
+    ></app-player-summary>
+  </ng-container>
+</div>

@@ -16,5 +16,15 @@
     "name": "Nombre del Jugador",
     "namePH": "Introducir nombre",
     "connect": "Conectarse"
+  },
+  "game": {
+    "formTitle": "Configuración de opciones de la partida",
+    "velocity": "Velocidad",
+    "velocities": {
+      "0": "Despacio",
+      "1": "Normal",
+      "2": "Rapido"
+    },
+    "roomTitle": "Jugadores en linea para la partida"
   }
 }

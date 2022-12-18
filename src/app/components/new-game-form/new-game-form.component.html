@@ -1,0 +1,32 @@
+<p>new-game-form works!</p>
+<pre>gameConfigForm: {{ gameConfigForm.value | json }}</pre>
+
+<div class="new-game-form">
+  <form
+    class="display-grid"
+    [formGroup]="gameConfigForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <mat-form-field appearance="fill">
+      <mat-label> {{ "game.velocity" | translate }}</mat-label>
+      <mat-select [formControl]="velocityControl" name="velocity">
+        <mat-option
+          *ngFor="let velocity of gameVelocityValues"
+          [value]="velocity"
+        >
+          {{ "game.velocities." + velocity | translate }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button
+      mat-fab
+      extended
+      color="primary"
+      [disabled]="!gameConfigForm.valid"
+      type="submit"
+    >
+      {{ "player.connect" | translate }}
+    </button>
+  </form>
+</div>
