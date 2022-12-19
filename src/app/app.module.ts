@@ -20,11 +20,12 @@ import { NewPlayerComponent } from './views/new-player/new-player.component';
 import { NewPlayerFormComponent } from './components/new-player-form/new-player-form.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreRouterConnectingModule   } from '@ngrx/router-store';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { NewGameComponent } from './views/new-game/new-game.component';
 import { NewGameFormComponent } from './components/new-game-form/new-game-form.component';
 import { GameRoomComponent } from './components/game-room/game-room.component';
 import { PlayerSummaryComponent } from './components/player-summary/player-summary.component';
+import { appEffects } from './redux';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -71,7 +72,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
     MaterialModule,
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot(appEffects),
     StoreRouterConnectingModule.forRoot(),
   ],
   providers: [],

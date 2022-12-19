@@ -5,8 +5,9 @@ import { initialGameState } from '../state/gameState';
 
 export const gameReducer = createReducer(
   initialGameState,
-  on(initConfigurationGame, (state) => ({
+  on(initConfigurationGame, (state, { gameConfig }) => ({
     ...state,
     status: GameStatus.initialized,
+    config: gameConfig,
   }))
 );

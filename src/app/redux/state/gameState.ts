@@ -12,99 +12,23 @@ export const initialGameState: GameState = {
   players: [
     {
       id: "homer",
-      name: "Homer"
+      name: "Alberto"
     },
     {
       id: "goku",
-      name: "Goku"
+      name: "Irene"
     },
     {
       id: "homer",
-      name: "Homer"
+      name: "Iván"
+    },
+    {
+      id: "homer",
+      name: "Anna"
     },
     {
       id: "goku",
       name: "GokuGokuGokuGokuGokuGokuGoku"
-    },
-    {
-      id: "homer",
-      name: "Homer"
-    },
-    {
-      id: "goku",
-      name: "Goku"
-    },
-    {
-      id: "homer",
-      name: "Homer"
-    },
-    {
-      id: "goku",
-      name: "Goku"
-    },
-    {
-      id: "homer",
-      name: "Homer"
-    },
-    {
-      id: "goku",
-      name: "Goku"
-    },
-    {
-      id: "homer",
-      name: "Homer"
-    },
-    {
-      id: "goku",
-      name: "Goku"
-    },
-    {
-      id: "homer",
-      name: "Homer"
-    },
-    {
-      id: "goku",
-      name: "Goku"
-    },
-    {
-      id: "homer",
-      name: "Homer"
-    },
-    {
-      id: "goku",
-      name: "Goku"
-    },
-    {
-      id: "homer",
-      name: "Homer"
-    },
-    {
-      id: "goku",
-      name: "Goku"
-    },
-    {
-      id: "homer",
-      name: "Homer"
-    },
-    {
-      id: "goku",
-      name: "Goku"
-    },
-    {
-      id: "homer",
-      name: "Homer"
-    },
-    {
-      id: "goku",
-      name: "Goku"
-    },
-    {
-      id: "homer",
-      name: "Homer"
-    },
-    {
-      id: "goku",
-      name: "Goku"
-    },
+    }
   ]
 };

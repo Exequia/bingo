@@ -1,4 +1,4 @@
-import { AbstractControl } from "@angular/forms";
+import { AbstractControl } from '@angular/forms';
 
 export enum GameStatus {
   pending,
@@ -8,13 +8,13 @@ export enum GameStatus {
 }
 
 export interface GameConfig {
-    velocity: GameVelocity;
-  }
+  velocity: GameVelocity;
+}
 
-  export interface GameConfigForm {
-    velocity: AbstractControl<GameVelocity | null>;
-  }
-    
+export interface GameConfigForm {
+  velocity: AbstractControl<GameVelocity | null>;
+}
+
 export interface GameData {
   round: GameRound;
   history: GameRound[];

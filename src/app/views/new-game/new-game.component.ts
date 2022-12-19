@@ -14,6 +14,6 @@ export class NewGameComponent {
   constructor(private readonly gameFacade: GameFacade) {}
 
   handelGameConfig(gameConfig: GameConfig) {
-    console.log('TODO: iniciar la partida', gameConfig);
+    this.gameFacade.initGameConfig(gameConfig);
   }
 }
