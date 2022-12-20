@@ -1,10 +1,12 @@
-import { GameConfig } from '@app/models';
+import { GameConfig, GameStatus } from '@app/models';
 import { createAction, props } from '@ngrx/store';
 
-export const INIT_CONFIGURATION_GAME = '[Game] Init configuration game';
-
+export const setGameStatus = createAction(
+  '[Game] Set game status',
+  props<{ gameStatus: GameStatus }>()
+);
 export const initConfigurationGame = createAction(
-  INIT_CONFIGURATION_GAME,
+  '[Game] Init configuration game',
   props<{ gameConfig: GameConfig }>()
 );
 export const initConfigurationGameSuccess = createAction(

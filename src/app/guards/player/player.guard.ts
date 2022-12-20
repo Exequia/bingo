@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class CanActivatePlayer implements CanActivate {
+export class PlayerGuard implements CanActivate {
   player$ = this.playerFacade.player$;
 
   constructor(

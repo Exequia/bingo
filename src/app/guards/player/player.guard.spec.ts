@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CanActivatePlayerService } from './can-activate-player.service';
+import { PlayerGuard } from './player.guard';
 
 describe('CanActivatePlayerService', () => {
   let service: CanActivatePlayerService;

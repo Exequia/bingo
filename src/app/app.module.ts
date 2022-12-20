@@ -26,6 +26,7 @@ import { NewGameFormComponent } from './components/new-game-form/new-game-form.c
 import { GameRoomComponent } from './components/game-room/game-room.component';
 import { PlayerSummaryComponent } from './components/player-summary/player-summary.component';
 import { appEffects } from './redux';
+import { ShoppingComponent } from './views/shopping/shopping.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -45,6 +46,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     NewGameFormComponent,
     GameRoomComponent,
     PlayerSummaryComponent,
+    ShoppingComponent,
   ],
   imports: [
     BrowserModule,

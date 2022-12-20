@@ -13,7 +13,8 @@ export class NewGameComponent {
 
   constructor(private readonly gameFacade: GameFacade) {}
 
-  handelGameConfig(gameConfig: GameConfig) {
+  startGame(gameConfig: GameConfig) {
+    this.gameFacade.setGameStatusShopping();
     this.gameFacade.initGameConfig(gameConfig);
   }
 }

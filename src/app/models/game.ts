@@ -3,6 +3,7 @@ import { AbstractControl } from '@angular/forms';
 export enum GameStatus {
   pending,
   initialized,
+  shopping,
   started,
   finished,
 }
