@@ -7,8 +7,14 @@
       <mat-icon>menu</mat-icon>
     </button> -->
     <span [translate]="'toolbar.title'"></span>
-    <span class="playerName" *ngIf="player?.id">&nbsp;-&nbsp;{{ player?.name }}</span>
+    <span *ngIf="player?.id">&nbsp;-&nbsp;{{ player?.name }}</span>
+
     <span class="spacer"></span>
+
+      <div class="player-amount px-3">
+        <span class="amount">{{ player?.amount}}</span>
+        <mat-icon fontIcon="account_balance"></mat-icon>
+      </div>
     <!-- <button
       mat-icon-button
       class="example-icon"

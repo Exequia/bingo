@@ -2,6 +2,16 @@
   flex: 1 1 auto;
 }
 
-.playerName {
-  // font-size: medium;
+.player-amount {
+  color: black;
+  background: gold;
+  border: #7e7023 solid;
+  border-radius: 50px;
+  .amount {
+    margin-right: 5px;
+  }
+
+  .mat-icon {
+    padding-top: 2px;
+  }
 }
