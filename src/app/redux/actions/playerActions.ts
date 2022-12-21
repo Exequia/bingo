@@ -21,3 +21,8 @@ export const saveLocalPlayer = createAction(
   '[Player] Save Local Player',
   props<{ player: PlayerBase }>()
 );
+
+export const addCredit = createAction(
+  '[Player] Add Credit to Local Player',
+  props<{ credit: number }>()
+  );

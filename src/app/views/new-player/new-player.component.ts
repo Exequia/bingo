@@ -35,6 +35,7 @@ export class NewPlayerComponent {
       data: { welcomePlayerAmmount: this.welcomePlayerAmmount },
     });
     dialogRef.afterClosed().subscribe(() => {
+      this.playerFacade.addCredit(WELCOME_PLAYER_AMOUNT);
       this.routerFacade.navigateTo();
     }).unsubscribe;
   }
