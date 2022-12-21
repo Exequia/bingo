@@ -11,7 +11,7 @@ import {
   URL_PLAYER_PAGE,
   URL_SHOPPING,
   URL_SHOPPING_PAGE,
-} from './config/contants';
+} from './config/routerConstants';
 import { GameGuard } from './guards/game/game.guard';
 import { PlayerGuard } from './guards/player/player.guard';
 import { HomeComponent } from './views/home/home.component';

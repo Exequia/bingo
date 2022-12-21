@@ -1,20 +1,23 @@
+import { GamePlayer, PlayerBase } from '@app/models';
 import { createAction, props } from '@ngrx/store';
 
-export const SET_PLAYER_NAME = '[Player] Set Player Name';
-export const SET_PLAYER_NAME_SUCCESS = '[Player] Set Player Name Success';
-export const SET_PLAYER_NAME_FAILURE = '[Player] Set Player Name Failure';
-
-export const setPlayerName = createAction(
-  SET_PLAYER_NAME,
+export const CREATE_PLAYER_NAME = '[Player] Create Player Name';
+export const createNewGamePlayer = createAction(
+  CREATE_PLAYER_NAME,
   props<{ name: string }>()
-);
+  );
 
 export const setPlayerNameSuccess = createAction(
-  SET_PLAYER_NAME_SUCCESS,
+  `${CREATE_PLAYER_NAME} Success`,
   props<{ name: string }>()
 );
 
 export const setPlayerNameFailure = createAction(
-  SET_PLAYER_NAME_FAILURE,
+  `${CREATE_PLAYER_NAME} Failure`,
   props<{ name: string }>()
+);
+  
+export const saveLocalPlayer = createAction(
+  '[Player] Save Local Player',
+  props<{ player: PlayerBase }>()
 );

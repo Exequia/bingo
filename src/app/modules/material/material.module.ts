@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const materialModules = [
   MatToolbarModule,
@@ -20,6 +21,7 @@ const materialModules = [
   MatSelectModule,
   MatDividerModule,
   MatBadgeModule,
+  MatDialogModule,
 ];
 
 @NgModule({

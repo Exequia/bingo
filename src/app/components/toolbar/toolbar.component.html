@@ -1,19 +1,19 @@
 <section>
   <mat-toolbar color="primary">
-    <button
+    <!-- <button
       mat-icon-button
       disabled
     >
       <mat-icon>menu</mat-icon>
-    </button>
+    </button> -->
     <span [translate]="'toolbar.title'"></span>
+    <span class="playerName" *ngIf="player?.id">&nbsp;-&nbsp;{{ player?.name }}</span>
     <span class="spacer"></span>
-    <span *ngIf="player?.id">{{player?.name}}</span>
-    <button
+    <!-- <button
       mat-icon-button
       class="example-icon"
     >
       <mat-icon>settings</mat-icon>
-    </button>
+    </button> -->
   </mat-toolbar>
 </section>

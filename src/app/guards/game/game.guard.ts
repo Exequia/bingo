@@ -5,7 +5,7 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { URL_GAME, URL_HOME, URL_SHOPPING } from '@app/config/contants';
+import { URL_GAME, URL_HOME, URL_SHOPPING } from '@app/config/routerConstants';
 import { GameStatus } from '@app/models';
 import { GameFacade } from '@app/redux/facades/gameFacade';
 import { RouterFacade } from '@app/redux/facades/routerFacade';

@@ -1,11 +1,9 @@
-export interface Player {
+export interface PlayerBase {
   id?: string;
   name?: string;
-  amount: number;
+  amount?: number;
 }
-export interface GamePlayer {
-  id: string;
-  name: string;
+export interface GamePlayer extends PlayerBase {
   owner?: boolean;
   position?: number;
 }

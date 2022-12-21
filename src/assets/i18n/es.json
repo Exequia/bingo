@@ -27,5 +27,13 @@
       "2": "Rapida"
     },
     "roomTitle": "Jugadores en linea"
+  },
+  "dialogs":{
+    "welcomePlayer": {
+      "title": "¡Gracias por registrarte!",
+      "welcomeGift": "Regalo de bienvenida",
+      "detailGift": "Has recibido {{amount}} créditos",
+      "getGift": "Recoger"
+    }
   }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { setPlayerName } from '../actions';
+import { createNewGamePlayer } from '../actions';
 import { selectPlayerFeature } from '../reducers';
 import { AppState } from '../state';
 
@@ -12,8 +12,8 @@ export class PlayerFacade {
 
   constructor(private store: Store<AppState>) {}
 
-  setPlayerName(name: string) {
-    this.store.dispatch(setPlayerName({name}));
+  createNewGamePlayer(name: string) {
+    this.store.dispatch(createNewGamePlayer({name}));
   }
 
   // addNewTodo(todo: string) {

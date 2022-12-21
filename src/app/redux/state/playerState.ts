@@ -1,6 +1,6 @@
-import { Player } from '@app/models';
+import { PlayerBase } from '@app/models';
 
-export interface PlayerState extends Player {
+export interface PlayerState extends PlayerBase {
 }
 
 export const initialPlayerState: PlayerState = {

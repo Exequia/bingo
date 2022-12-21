@@ -1,30 +1,25 @@
 import { Injectable } from '@angular/core';
-import { PlayerService } from '@app/services/player/player.service';
+// import { PlayerService } from '@app/services/player/player.service';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { EMPTY } from 'rxjs';
-import { map, exhaustMap, catchError } from 'rxjs/operators';
-import { setPlayerName, SET_PLAYER_NAME } from '../actions';
+// import { Store } from '@ngrx/store';
+import { map } from 'rxjs/operators';
+import { createNewGamePlayer, saveLocalPlayer } from '../actions';
+// import { AppState } from '../state';
 
 @Injectable()
 export class PlayerEffects {
   constructor(
     private readonly actions$: Actions,
-    private readonly playerService: PlayerService
+    // private readonly store: Store<AppState>,
+    // private readonly playerService: PlayerService
   ) {}
 
-//   setPlayerName$ = createEffect(() =>
-//     this.actions$.pipe(
-//       ofType(setPlayerName),
-//       exhaustMap((action) =>
-//         this.playerService.setPlayerName(action.name).pipe(
-//           map((movies) => EMPTY
-//         //    ({
-//         //     type: '[Movies API] Movies Loaded Success',
-//         //     payload: movies,
-//         //   })),
-//           ,catchError(() => EMPTY)
-//         )
-//       )
-//     )
-//   );
+  createNewGamePlayer$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(createNewGamePlayer),
+      map((payload) =>
+        saveLocalPlayer({ player: { name: payload.name, id: payload.name } })
+      )
+    )
+  );
 }

@@ -1,0 +1,17 @@
+<div class="welcomePlayerDialog">
+  <h1 mat-dialog-title>{{ "dialogs.welcomePlayer.title" | translate }}</h1>
+  <div mat-dialog-content>
+    <h2>
+      {{ "dialogs.welcomePlayer.welcomeGift" | translate }}
+    </h2>
+    <p translate [translateParams]="{ amount: data.welcomePlayerAmmount }">
+      dialogs.welcomePlayer.detailGift
+    </p>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-fab extended color="accent" mat-dialog-close cdkFocusInitial>
+      <mat-icon>savings</mat-icon>
+      {{ "dialogs.welcomePlayer.getGift" | translate }}
+    </button>
+  </div>
+</div>
