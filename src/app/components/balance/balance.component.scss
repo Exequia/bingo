@@ -1,0 +1,25 @@
+.player-balance {
+  color: black;
+  background: gold;
+  border: #7e7023 solid;
+  border-radius: 50px;
+  padding: 2% 0;
+  display: inline-block;
+
+  .balance {
+    margin-right: 5px;
+    font-size: x-large;
+  }
+
+  .mat-icon {
+    padding-top: 3px;
+  }
+
+  &.add {
+    color: green;
+  }
+
+  &.substract {
+    color: red;
+  }
+}

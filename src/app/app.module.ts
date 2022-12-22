@@ -28,6 +28,7 @@ import { PlayerSummaryComponent } from './components/player-summary/player-summa
 import { appEffects } from './redux';
 import { ShoppingComponent } from './views/shopping/shopping.component';
 import { WelcomeNewPlayerDialogComponent } from './components/dialogs/welcome-new-player-dialog/welcome-new-player-dialog.component';
+import { BalanceComponent } from './components/balance/balance.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -49,6 +50,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     PlayerSummaryComponent,
     ShoppingComponent,
     WelcomeNewPlayerDialogComponent,
+    BalanceComponent,
   ],
   imports: [
     BrowserModule,

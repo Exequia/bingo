@@ -32,7 +32,7 @@
     "welcomePlayer": {
       "title": "¡Gracias por registrarte!",
       "welcomeGift": "Regalo de bienvenida",
-      "detailGift": "Has recibido {{amount}} créditos",
+      "detailGift": "Has recibido algunos créditos",
       "getGift": "Recoger"
     }
   }

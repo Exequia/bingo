@@ -11,10 +11,7 @@
 
     <span class="spacer"></span>
 
-      <div class="player-amount px-3">
-        <span class="amount">{{ player?.amount}}</span>
-        <mat-icon fontIcon="account_balance"></mat-icon>
-      </div>
+    <app-balance [balance]="player?.amount"></app-balance>
     <!-- <button
       mat-icon-button
       class="example-icon"

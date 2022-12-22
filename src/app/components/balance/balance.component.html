@@ -1,0 +1,7 @@
+<div class="player-balance px-3" [ngClass]="balanceType">
+  <span class="balance">
+    <span *ngIf="balanceTypeIcon">{{ balanceTypeIcon }} </span
+    >{{ balance | number }}
+  </span>
+  <mat-icon fontIcon="account_balance_wallet"></mat-icon>
+</div>

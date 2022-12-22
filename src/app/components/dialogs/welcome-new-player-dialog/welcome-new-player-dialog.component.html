@@ -4,9 +4,11 @@
     <h2>
       {{ "dialogs.welcomePlayer.welcomeGift" | translate }}
     </h2>
-    <p translate [translateParams]="{ amount: data.welcomePlayerAmmount }">
-      dialogs.welcomePlayer.detailGift
-    </p>
+    <p translate>dialogs.welcomePlayer.detailGift</p>
+    <app-balance
+      [balance]="data.welcomePlayerAmmount"
+      [balanceType]="balanceType"
+    ></app-balance>
   </div>
   <div mat-dialog-actions>
     <button mat-fab extended color="accent" mat-dialog-close cdkFocusInitial>
