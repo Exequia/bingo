@@ -1,4 +1,4 @@
-import { GameConfig, GameStatus } from '@app/models';
+import { GameConfig, GameStatus, GiftResponse } from '@app/models';
 import { createAction, props } from '@ngrx/store';
 
 export const setGameStatus = createAction(
@@ -15,6 +15,20 @@ export const initConfigurationGameSuccess = createAction(
 export const initConfigurationGameFailure = createAction(
   '[Game] Init configuration game Failure'
 );
+export const shoppingRound = createAction(
+  '[Game] Shopping Round',
+  props<{ dashboardAmount: number }>()
+);
+export const saveGameGift = createAction(
+  '[Game] Save game Gift',
+  props<{ gift: GiftResponse | undefined }>()
+);
+export const manageGameGift = createAction(
+  '[Game] Manage game Gift',
+  props<{ gift: GiftResponse | undefined }>()
+);
+
+
 
 export const gameStartLoadingActions = [initConfigurationGame];
 export const gameStopLoadingActions = [

@@ -1,25 +1,73 @@
 import { Injectable } from '@angular/core';
-// import { PlayerService } from '@app/services/player/player.service';
+import {
+  BalanceType,
+  GamePlayerStatus,
+  GiftResponseType,
+} from '@app/models';
+import { BackService } from '@app/services/back/back.service';
+import { PlayerService } from '@app/services/player/player.service';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-// import { Store } from '@ngrx/store';
-import { map } from 'rxjs/operators';
-import { createNewGamePlayer, saveLocalPlayer } from '../actions';
-// import { AppState } from '../state';
+import { exhaustMap, catchError, mergeMap } from 'rxjs/operators';
+import { EMPTY } from 'rxjs';
+import {
+  changePlayerStatus,
+  createNewGamePlayer,
+  playerShopping,
+  saveGameGift,
+  saveLocalPlayer,
+  shoppingRound,
+} from '../actions';
+import { isEqual } from 'lodash';
 
 @Injectable()
 export class PlayerEffects {
   constructor(
     private readonly actions$: Actions,
-    // private readonly store: Store<AppState>,
-    // private readonly playerService: PlayerService
+    private readonly playerService: PlayerService,
+    private readonly backService: BackService
   ) {}
 
   createNewGamePlayer$ = createEffect(() =>
     this.actions$.pipe(
       ofType(createNewGamePlayer),
-      map((payload) =>
-        saveLocalPlayer({ player: { name: payload.name, id: payload.name } })
+      exhaustMap((payload) =>
+        this.backService.createNewGamePlayer(payload.name).pipe(
+          mergeMap((playerResponse) => {
+            const player = playerResponse.player;
+            if (
+              player.amount &&
+              playerResponse.gift &&
+              isEqual(playerResponse.gift?.type, GiftResponseType.credit)
+            ) {
+              player.amount = isEqual(
+                playerResponse.gift?.balanceType,
+                BalanceType.Add
+              )
+                ? player.amount - playerResponse.gift?.balance
+                : player.amount + playerResponse.gift?.balance;
+            }
+            return [
+              saveLocalPlayer({
+                player: this.playerService.castPlayerResponse(
+                  playerResponse.player
+                ),
+              }),
+              saveGameGift({ gift: playerResponse.gift }),
+            ];
+          }),
+          catchError(() => EMPTY)
+        )
       )
+    )
+  );
+
+  playerShopping$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(playerShopping),
+      exhaustMap((payload) => [
+        changePlayerStatus({ playerStatus: GamePlayerStatus.shopping }),
+        shoppingRound({ dashboardAmount: payload.dashboardAmount }),
+      ])
     )
   );
 }

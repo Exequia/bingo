@@ -29,7 +29,8 @@
       "@state": ["app/redux/index.ts"],
       "@models": ["app/models/index.ts"],
       "@services/*": ["app/services/*"],
-      "@views/*": ["app/views/*"]
+      "@views/*": ["app/views/*"],
+      "@mocks/*": ["app/mocks/*"]
     }
   },
   "angularCompilerOptions": {

@@ -1,1 +1,30 @@
-<p>shopping works!</p>
+<div class="shopping">
+  <form class="display-grid" [formGroup]="shoppingForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill" class="mb-4">
+      <mat-label>{{ "shopping.dashboardAmount" | translate }}</mat-label>
+      <input
+        matInput
+        type="number"
+        [min]="dashboardAmountMin"
+        formControlName="dashboardAmount"
+        required
+        autofocus="true"
+      />
+      <mat-hint>{{
+        "shopping.dashboardAmountHint" | translate : { value: dashboardPrice }
+      }}</mat-hint>
+    </mat-form-field>
+
+    <app-balance [balance]="bill" [balanceType]="balanceType" class="mb-4"></app-balance>
+
+    <button
+      mat-fab
+      extended
+      color="primary"
+      [disabled]="!shoppingForm.valid"
+      type="submit"
+    >
+      {{ "shopping.buyAndPlay" | translate }}
+    </button>
+  </form>
+</div>

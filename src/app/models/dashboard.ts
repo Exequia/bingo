@@ -1,19 +1,20 @@
-export interface dashboard {
-    rows: dashboardRow[]
+export interface Dashboard {
+    rows: DashboardRow[]
 }
 
-export interface dashboardRow {
-    cells: dashboardRowCell[],
+export interface DashboardRow {
+    cells: DashboardRowCell[],
     status:rowStatus
 }
 
 export enum rowStatus {
+    standard,
     close,
     almost,
     completed
 }
 
-export interface dashboardRowCell {
+export interface DashboardRowCell {
     value: number,
     status: cellStatus
 }

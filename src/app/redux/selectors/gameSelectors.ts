@@ -15,3 +15,8 @@ export const selectGamePlayers = createSelector(
   selectGameFeature,
   (gameState) => gameState?.players
 );
+
+export const selectGameGift = createSelector(
+  selectGameFeature,
+  (gameState) => gameState?.gift
+);

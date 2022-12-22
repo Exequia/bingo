@@ -1,4 +1,5 @@
 import { AbstractControl } from '@angular/forms';
+import { Dashboard } from './dashboard';
 
 export enum GameStatus {
   pending,
@@ -35,4 +36,11 @@ export interface GameRound {
 export interface GameResults {
   playerIdLineWinner: number;
   playerIdRoundWinner: number;
+}
+
+
+export interface RoundResponse {
+  id: string;
+  dashboardsValues: number[][];
+  playerAmount: number;
 }

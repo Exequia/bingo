@@ -50,7 +50,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     PlayerSummaryComponent,
     ShoppingComponent,
     WelcomeNewPlayerDialogComponent,
-    BalanceComponent,
+    BalanceComponent
   ],
   imports: [
     BrowserModule,

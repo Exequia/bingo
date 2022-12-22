@@ -35,5 +35,10 @@
       "detailGift": "Has recibido algunos créditos",
       "getGift": "Recoger"
     }
+  },
+  "shopping": {
+    "dashboardAmount": "Numero de cartones",
+    "dashboardAmountHint": "Precio individual {{value}} créditos",
+    "buyAndPlay": "Comprar y Jugar"
   }
 }
