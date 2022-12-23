@@ -1,24 +1,4 @@
-<div class="new-game">
-  <div>
-    <h1>{{ "game.formTitle" | translate }}</h1>
-    <app-new-game-form
-      [gameConfig]="gameConfig$ | async"
-      (gameConfigEmmit)="startGame($event)"
-    ></app-new-game-form>
-  </div>
-  <div class="mt-5">
-    <mat-divider></mat-divider>
-    <h1 class="mt-3" matBadgeOverlap="false">
-      <span>
-        {{ "game.roomTitle" | translate }}
-      </span>
-      <span
-        [matBadge]="(gamePlayers$ | async)?.length"
-        [matBadgePosition]="'below after'"
-      >
-        &nbsp;
-      </span>
-    </h1>
-    <app-game-room [gamePlayers]="gamePlayers$ | async"></app-game-room>
-  </div>
-</div>
+<app-new-game-form
+  [gameConfig]="gameConfig$ | async"
+  (gameConfigEmmit)="startGame($event)"
+></app-new-game-form>

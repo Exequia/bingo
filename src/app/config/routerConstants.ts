@@ -1,12 +1,14 @@
 export const URL_HOME = 'home';
 export const URL_PLAYER = 'player';
 export const URL_GAME = 'game';
+export const URL_NEW = 'new';
 export const URL_SHOPPING = 'shopping';
 export const URL_BINGO = 'bingo';
 export const URL_NOT_FOUND = '**';
 export const URL_HOME_PAGE = 'homePage';
 export const URL_PLAYER_PAGE = 'playerPage';
 export const URL_GAME_PAGE = 'gamePage';
+export const URL_NEW_PAGE = 'newPage';
 export const URL_SHOPPING_PAGE = 'shoppingPage';
 export const URL_BINGO_PAGE = 'bingoPage';
 export const URL_NOT_FOUND_PAGE = 'notFoundPage';

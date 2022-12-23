@@ -18,12 +18,13 @@ import {
   shoppingRound,
 } from '../actions';
 import { isEqual } from 'lodash';
+import { PlayerUtils } from '@app/utils/player/player-utils.service';
 
 @Injectable()
 export class PlayerEffects {
   constructor(
     private readonly actions$: Actions,
-    private readonly playerService: PlayerService,
+    private readonly playerUtils: PlayerUtils,
     private readonly backService: BackService
   ) {}
 
@@ -48,7 +49,7 @@ export class PlayerEffects {
             }
             return [
               saveLocalPlayer({
-                player: this.playerService.castPlayerResponse(
+                player: this.playerUtils.castPlayerResponse(
                   playerResponse.player
                 ),
               }),

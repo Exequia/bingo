@@ -46,6 +46,7 @@ export class GameEffects {
             if (response) {
               this.playerFacade.setPlayerStatusReady();
               this.playerFacade.setPlayerAmount(response.playerAmount);
+              this.playerFacade.setPlayerDashboard(response.dashboardsValues);
             }
           })
           .unsubscribe();

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { URL_SHOPPING } from '@app/config';
+import { URL_GAME, URL_SHOPPING } from '@app/config';
 import { GameConfig, GameStatus, GiftResponse } from '@app/models';
 import { Store } from '@ngrx/store';
 import {
@@ -37,7 +37,7 @@ export class GameFacade {
 
   setGameStatusShopping() {
     this.setGameStatus(GameStatus.shopping);
-    this.routerFacade.navigateTo(URL_SHOPPING);
+    this.routerFacade.navigateTo(`/${URL_GAME}/${URL_SHOPPING}`);
   }
 
   private setGameStatus(gameStatus: GameStatus) {

@@ -5,6 +5,8 @@ import {
   URL_GAME_PAGE,
   URL_HOME,
   URL_HOME_PAGE,
+  URL_NEW,
+  URL_NEW_PAGE,
   URL_NOT_FOUND,
   URL_NOT_FOUND_PAGE,
   URL_PLAYER,
@@ -15,10 +17,11 @@ import {
 import { GameGuard } from './guards/game/game.guard';
 import { PlayerGuard } from './guards/player/player.guard';
 import { HomeComponent } from './views/home/home.component';
-import { NewGameComponent } from './views/new-game/new-game.component';
+import { GameComponent } from './views/game/game.component';
 import { NewPlayerComponent } from './views/new-player/new-player.component';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
 import { ShoppingComponent } from './views/shopping/shopping.component';
+import { NewGameComponent } from './views/new-game/new-game.component';
 
 const routes: Routes = [
   {
@@ -30,15 +33,24 @@ const routes: Routes = [
   { path: URL_HOME, redirectTo: '', pathMatch: 'full' },
   {
     path: URL_GAME,
-    component: NewGameComponent,
+    component: GameComponent,
     canActivate: [PlayerGuard, GameGuard],
     data: { animation: URL_GAME_PAGE },
-  },
-  {
-    path: URL_SHOPPING,
-    component: ShoppingComponent,
-    canActivate: [PlayerGuard, GameGuard],
-    data: { animation: URL_SHOPPING_PAGE },
+    children: [
+      { path: '', redirectTo: `/${URL_GAME}/${URL_NEW}`, pathMatch: 'full' },
+      {
+        path: URL_NEW,
+        component: NewGameComponent,
+        data: { animation: URL_NEW_PAGE },
+      },
+      {
+        path: URL_SHOPPING,
+        component: ShoppingComponent,
+        canActivate: [PlayerGuard, GameGuard],
+        data: { animation: URL_SHOPPING_PAGE },
+        pathMatch: 'full',
+      },
+    ],
   },
   // { path: URL_BINGO, component: GameComponent, canActivate: [PlayerGuard] },
   {

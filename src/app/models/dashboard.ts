@@ -1,26 +1,26 @@
 export interface Dashboard {
-    rows: DashboardRow[]
+  rows: DashboardRow[];
 }
 
 export interface DashboardRow {
-    cells: DashboardRowCell[],
-    status:rowStatus
+  cells: DashboardRowCell[];
+  status: DashboardRowStatus;
 }
 
-export enum rowStatus {
-    standard,
-    close,
-    almost,
-    completed
+export enum DashboardRowStatus {
+  standard,
+  close,
+  almost,
+  completed,
 }
 
 export interface DashboardRowCell {
-    value: number,
-    status: cellStatus
+  value: number | undefined;
+  status: DashboardRowCellStatus;
 }
 
-export enum cellStatus {
-    empty,
-    waiting,
-    checked
+export enum DashboardRowCellStatus {
+  empty,
+  waiting,
+  checked,
 }

@@ -41,6 +41,6 @@ export interface GameResults {
 
 export interface RoundResponse {
   id: string;
-  dashboardsValues: number[][];
+  dashboardsValues: number[][][];
   playerAmount: number;
 }

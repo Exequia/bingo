@@ -1,4 +1,4 @@
-import { GamePlayer, GiftResponse } from '@app/models';
+import { Dashboard, GamePlayer, GiftResponse } from '@app/models';
 import { GameConfig, GameStatus } from '../../models/game';
 
 export interface GameState {
@@ -6,6 +6,7 @@ export interface GameState {
   players?: GamePlayer[];
   config?: GameConfig;
   gift?: GiftResponse;
+  roundDashboards?: Dashboard[];
 }
 
 export const initialGameState: GameState = {

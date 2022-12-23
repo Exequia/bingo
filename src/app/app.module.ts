@@ -21,7 +21,7 @@ import { NewPlayerFormComponent } from './components/new-player-form/new-player-
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
-import { NewGameComponent } from './views/new-game/new-game.component';
+import { GameComponent } from './views/game/game.component';
 import { NewGameFormComponent } from './components/new-game-form/new-game-form.component';
 import { GameRoomComponent } from './components/game-room/game-room.component';
 import { PlayerSummaryComponent } from './components/player-summary/player-summary.component';
@@ -29,6 +29,7 @@ import { appEffects } from './redux';
 import { ShoppingComponent } from './views/shopping/shopping.component';
 import { WelcomeNewPlayerDialogComponent } from './components/dialogs/welcome-new-player-dialog/welcome-new-player-dialog.component';
 import { BalanceComponent } from './components/balance/balance.component';
+import { NewGameComponent } from './views/new-game/new-game.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -44,13 +45,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     ToolbarComponent,
     NewPlayerComponent,
     NewPlayerFormComponent,
-    NewGameComponent,
+    GameComponent,
     NewGameFormComponent,
     GameRoomComponent,
     PlayerSummaryComponent,
     ShoppingComponent,
     WelcomeNewPlayerDialogComponent,
-    BalanceComponent
+    BalanceComponent,
+    NewGameComponent
   ],
   imports: [
     BrowserModule,
