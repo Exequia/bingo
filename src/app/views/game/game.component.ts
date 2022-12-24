@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
 import { ChildrenOutletContexts } from '@angular/router';
-import { childAnimation } from '@app/animations/router.animations';
+import {
+  slideChildAnimation,
+  slideInAnimation,
+} from '@app/animations/router.animations';
 import { GamePlayerFacade } from '@app/redux/facades/gamePlayersFacade';
 
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss'],
-  animations: [childAnimation],
+  animations: [slideChildAnimation],
 })
 export class GameComponent {
   gamePlayers$ = this.gamePlayerFacade.gamePlayers$;

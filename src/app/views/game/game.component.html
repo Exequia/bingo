@@ -1,7 +1,7 @@
 <div class="new-game">
   <div>
     <h1>{{ "game.formTitle" | translate }}</h1>
-    <div [@openClose]="getRouteAnimationData()">
+    <div [@routeSlide]="getRouteAnimationData()">
       <router-outlet></router-outlet>
     </div>
   </div>
