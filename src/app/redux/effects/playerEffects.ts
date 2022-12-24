@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  BalanceType,
-  GamePlayerStatus,
-  GiftResponseType,
-} from '@app/models';
+import { BalanceType, GamePlayerStatus, GiftResponseType } from '@app/models';
 import { BackService } from '@app/services/back/back.service';
 import { PlayerService } from '@app/services/player/player.service';
 import { Actions, createEffect, ofType } from '@ngrx/effects';

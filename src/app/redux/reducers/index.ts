@@ -5,12 +5,14 @@ import { ConfigReducer as configReducer } from './configReducer';
 import { gameReducer } from './gameReducer';
 import { playerReducer } from './playerReducer';
 import { routerReducer } from '@ngrx/router-store';
+import { gamePlayerReducer } from '../entities/game-player.reducer';
 
 export const reducers: ActionReducerMap<AppState> = {
   config: configReducer,
   game: gameReducer,
   player: playerReducer,
   router: routerReducer,
+  gamePlayers: gamePlayerReducer,
 };
 
 // console.log all actions

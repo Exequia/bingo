@@ -3,9 +3,10 @@ export interface PlayerBase {
   name?: string;
   amount?: number;
 }
-export interface GamePlayer extends PlayerBase {
-  owner?: boolean;
-  position?: number;
+
+export interface GamePlayer {
+  id: string;
+  name: string;
   status?: GamePlayerStatus;
 }
 
@@ -26,6 +27,7 @@ export interface CreatePlayerResponse {
 }
 
 export interface PlayerResponse extends GamePlayer {
+  amount?: number;
 }
 
 export interface GiftResponse {

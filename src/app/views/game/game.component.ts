@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ChildrenOutletContexts } from '@angular/router';
-import { childAnimation, slideChildAnimation, slideInAnimation } from '@app/animations/router.animations';
-import { GameFacade } from '@app/redux/facades/gameFacade';
+import { childAnimation } from '@app/animations/router.animations';
+import { GamePlayerFacade } from '@app/redux/facades/gamePlayersFacade';
 
 @Component({
   selector: 'app-game',
@@ -10,12 +10,14 @@ import { GameFacade } from '@app/redux/facades/gameFacade';
   animations: [childAnimation],
 })
 export class GameComponent {
-  gamePlayers$ = this.gameFacade.gamePlayers$;
+  gamePlayers$ = this.gamePlayerFacade.gamePlayers$;
 
   constructor(
     private readonly contexts: ChildrenOutletContexts,
-    private readonly gameFacade: GameFacade
-  ) {}
+    private readonly gamePlayerFacade: GamePlayerFacade
+  ) {
+    this.gamePlayerFacade.loadGamePlayers();
+  }
 
   getRouteAnimationData() {
     return this.contexts.getContext('primary')?.route?.snapshot?.data?.[

@@ -10,11 +10,7 @@ import {
   saveGameGift,
   setGameStatus,
 } from '../actions';
-import {
-  selectGameConfig,
-  selectGamePlayers,
-  selectGameStatus,
-} from '../selectors/gameSelectors';
+import { selectGameConfig, selectGameStatus } from '../selectors/gameSelectors';
 import { AppState } from '../state';
 import { RouterFacade } from './routerFacade';
 
@@ -24,7 +20,6 @@ import { RouterFacade } from './routerFacade';
 export class GameFacade {
   gameStatus$ = this.store.select(selectGameStatus);
   gameConfig$ = this.store.select(selectGameConfig);
-  gamePlayers$ = this.store.select(selectGamePlayers);
 
   constructor(
     private readonly store: Store<AppState>,

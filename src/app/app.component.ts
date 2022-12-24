@@ -3,7 +3,6 @@ import { PlayerFacade } from './redux/facades/playerFacade';
 import { ConfigFacade } from './redux/facades/configFacade';
 import { ChildrenOutletContexts } from '@angular/router';
 import { slideInAnimation } from './animations/router.animations';
-import { OnDestroyObserverComponent } from './components/on-destroy-observer/on-destroy-observer.component';
 import { MatDialog } from '@angular/material/dialog';
 import { GiftResponse, GiftResponseType } from './models';
 import { DIALOG_CLOSE_TIME, DIALOG_OPEN_TIME } from './config';
