@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BalanceType } from '@app/models';
-import { GameFacade } from '@app/redux/facades/gameFacade';
+import { GameFacade } from '@app/store/facades/gameFacade';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -20,14 +20,17 @@ export class ShoppingComponent implements OnInit {
     ]),
   });
 
-  constructor(private readonly translate: TranslateService, private readonly gameFacade: GameFacade) {}
+  constructor(
+    private readonly translate: TranslateService,
+    private readonly gameFacade: GameFacade
+  ) {}
 
   ngOnInit(): void {
     this.shoppingForm
       .get('dashboardAmount')
       ?.valueChanges.subscribe((value) => {
         if (!value || value < this.dashboardAmountMin) {
-          value = 0
+          value = 0;
         }
         this.bill = value * this.dashboardPrice;
       });
@@ -41,7 +44,9 @@ export class ShoppingComponent implements OnInit {
 
   onSubmit() {
     if (this.shoppingForm.valid) {
-      this.gameFacade.playerShopping(this.shoppingForm.get('dashboardAmount')?.value!)
+      this.gameFacade.playerShopping(
+        this.shoppingForm.get('dashboardAmount')?.value!
+      );
     }
   }
 }

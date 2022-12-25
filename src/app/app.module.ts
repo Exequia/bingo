@@ -13,7 +13,7 @@ import { StoreModule } from '@ngrx/store';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './views/home/home.component';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
-import { reducers, metaReducers } from './redux/reducers';
+import { reducers, metaReducers } from './store/reducers';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { MaterialModule } from './modules/material/material.module';
 import { NewPlayerComponent } from './views/new-player/new-player.component';
@@ -25,7 +25,7 @@ import { GameComponent } from './views/game/game.component';
 import { NewGameFormComponent } from './components/new-game-form/new-game-form.component';
 import { GameRoomComponent } from './components/game-room/game-room.component';
 import { PlayerSummaryComponent } from './components/player-summary/player-summary.component';
-import { appEffects } from './redux';
+import { appEffects } from './store';
 import { ShoppingComponent } from './views/shopping/shopping.component';
 import { WelcomeNewPlayerDialogComponent } from './components/dialogs/welcome-new-player-dialog/welcome-new-player-dialog.component';
 import { BalanceComponent } from './components/balance/balance.component';
@@ -52,7 +52,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ShoppingComponent,
     WelcomeNewPlayerDialogComponent,
     BalanceComponent,
-    NewGameComponent
+    NewGameComponent,
   ],
   imports: [
     BrowserModule,

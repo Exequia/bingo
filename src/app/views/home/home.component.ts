@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { URL_GAME } from '@app/config/routerConstants';
 import { GameStatus } from '@app/models';
-import { GameFacade } from '@app/redux/facades/gameFacade';
-import { RouterFacade } from '@app/redux/facades/routerFacade';
+import { GameFacade } from '@app/store/facades/gameFacade';
+import { RouterFacade } from '@app/store/facades/routerFacade';
 import { filter } from 'rxjs';
 
 @Component({

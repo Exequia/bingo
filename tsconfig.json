@@ -26,7 +26,7 @@
       "@config/*": ["app/_config/*"],
       "@environment/*": ["environments/*"],
       "@components/*": ["app/components/*"],
-      "@state": ["app/redux/index.ts"],
+      "@state": ["app/store/index.ts"],
       "@models": ["app/models/index.ts"],
       "@services/*": ["app/services/*"],
       "@views/*": ["app/views/*"],

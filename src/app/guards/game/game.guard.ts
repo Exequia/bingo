@@ -7,8 +7,8 @@ import {
 } from '@angular/router';
 import { URL_GAME, URL_HOME, URL_SHOPPING } from '@app/config/routerConstants';
 import { GameStatus } from '@app/models';
-import { GameFacade } from '@app/redux/facades/gameFacade';
-import { RouterFacade } from '@app/redux/facades/routerFacade';
+import { GameFacade } from '@app/store/facades/gameFacade';
+import { RouterFacade } from '@app/store/facades/routerFacade';
 import { delay, map, Observable, take } from 'rxjs';
 import { get } from 'lodash';
 
@@ -39,22 +39,22 @@ export class GameGuard implements CanActivate {
         switch (gameStatus) {
           case GameStatus.initialized:
             return currentTarget === URL_GAME;
-            // if (currentTarget !== URL_GAME) {
-              // this.routerFacade.navigateTo(URL_GAME);
-            // }
-            // break;
+          // if (currentTarget !== URL_GAME) {
+          // this.routerFacade.navigateTo(URL_GAME);
+          // }
+          // break;
           case GameStatus.shopping:
             return currentTarget === URL_SHOPPING;
-            // if (currentTarget !== URL_SHOPPING) {
-            //   this.routerFacade.navigateTo(URL_SHOPPING);
-            // }
-            // break;
+          // if (currentTarget !== URL_SHOPPING) {
+          //   this.routerFacade.navigateTo(URL_SHOPPING);
+          // }
+          // break;
           default:
             return currentTarget === URL_HOME;
-            // if (currentTarget !== URL_HOME) {
-            //   this.routerFacade.navigateTo(URL_HOME);
-            // }
-            // break;
+          // if (currentTarget !== URL_HOME) {
+          //   this.routerFacade.navigateTo(URL_HOME);
+          // }
+          // break;
         }
         return false;
       })

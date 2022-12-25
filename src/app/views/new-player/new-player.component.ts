@@ -3,10 +3,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { WelcomeNewPlayerDialogComponent } from '@app/components/dialogs/welcome-new-player-dialog/welcome-new-player-dialog.component';
 import {
   DIALOG_OPEN_TIME,
-  DIALOG_CLOSE_TIME
+  DIALOG_CLOSE_TIME,
 } from '@app/config/dialogConstants';
-import { PlayerFacade } from '@app/redux/facades/playerFacade';
-import { RouterFacade } from '@app/redux/facades/routerFacade';
+import { PlayerFacade } from '@app/store/facades/playerFacade';
+import { RouterFacade } from '@app/store/facades/routerFacade';
 
 @Component({
   selector: 'app-new-player',
@@ -25,17 +25,17 @@ export class NewPlayerComponent {
   setName(playerName: string) {
     this.playerFacade.createNewGamePlayer(playerName);
     this.routerFacade.navigateTo();
-  //   this.openDialog();
-  // }
+    //   this.openDialog();
+    // }
 
-  // openDialog(): void {
-  //   const dialogRef = this.dialog.open(WelcomeNewPlayerDialogComponent, {
-  //     enterAnimationDuration: DIALOG_OPEN_TIME,
-  //     exitAnimationDuration: DIALOG_CLOSE_TIME,
-  //     data: { welcomePlayerAmmount: this.welcomePlayerAmmount },
-  //   });
-  //   dialogRef.afterClosed().subscribe(() => {
-  //     this.routerFacade.navigateTo();
-  //   }).unsubscribe;
+    // openDialog(): void {
+    //   const dialogRef = this.dialog.open(WelcomeNewPlayerDialogComponent, {
+    //     enterAnimationDuration: DIALOG_OPEN_TIME,
+    //     exitAnimationDuration: DIALOG_CLOSE_TIME,
+    //     data: { welcomePlayerAmmount: this.welcomePlayerAmmount },
+    //   });
+    //   dialogRef.afterClosed().subscribe(() => {
+    //     this.routerFacade.navigateTo();
+    //   }).unsubscribe;
   }
 }

@@ -5,8 +5,8 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { PlayerFacade } from '@app/redux/facades/playerFacade';
-import { RouterFacade } from '@app/redux/facades/routerFacade';
+import { PlayerFacade } from '@app/store/facades/playerFacade';
+import { RouterFacade } from '@app/store/facades/routerFacade';
 import { map } from 'rxjs';
 import { take } from 'rxjs';
 import { Observable } from 'rxjs';

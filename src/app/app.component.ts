@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { PlayerFacade } from './redux/facades/playerFacade';
-import { ConfigFacade } from './redux/facades/configFacade';
+import { PlayerFacade } from './store/facades/playerFacade';
+import { ConfigFacade } from './store/facades/configFacade';
 import { ChildrenOutletContexts } from '@angular/router';
 import { slideInAnimation } from './animations/router.animations';
 import { MatDialog } from '@angular/material/dialog';
 import { GiftResponse, GiftResponseType } from './models';
 import { DIALOG_CLOSE_TIME, DIALOG_OPEN_TIME } from './config';
 import { WelcomeNewPlayerDialogComponent } from './components/dialogs/welcome-new-player-dialog/welcome-new-player-dialog.component';
-import { GameFacade } from './redux/facades/gameFacade';
+import { GameFacade } from './store/facades/gameFacade';
 
 @Component({
   selector: 'app-root',

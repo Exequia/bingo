@@ -4,7 +4,7 @@ import {
   slideChildAnimation,
   slideInAnimation,
 } from '@app/animations/router.animations';
-import { GamePlayerFacade } from '@app/redux/facades/gamePlayersFacade';
+import { GamePlayerFacade } from '@app/store/facades/gamePlayersFacade';
 
 @Component({
   selector: 'app-game',
