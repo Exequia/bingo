@@ -10,6 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatChipsModule } from '@angular/material/chips';
 
 const materialModules = [
   MatToolbarModule,
@@ -22,6 +23,7 @@ const materialModules = [
   MatDividerModule,
   MatBadgeModule,
   MatDialogModule,
+  MatChipsModule,
 ];
 
 @NgModule({

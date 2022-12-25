@@ -1,25 +1,25 @@
-.player-balance {
-  color: black;
-  background: gold;
-  border: #7e7023 solid;
-  border-radius: 50px;
-  padding: 2% 0;
-  display: inline-block;
+@import "app/styles/variables";
 
-  .balance {
-    margin-right: 5px;
-    font-size: x-large;
-  }
+:host ::ng-deep {
+  .player-balance {
+    width: fit-content;
+    margin: auto;
+    background: $balance;
+    background: $balance-gradient;
+    display: flex !important;
+    align-items: center !important;
 
-  .mat-icon {
-    padding-top: 3px;
-  }
+    .mat-mdc-chip-action-label {
+      display: flex !important;
+      align-items: center !important;
+    }
 
-  &.add {
-    color: green;
-  }
+    .add {
+      color: green !important;
+    }
 
-  &.subtract {
-    color: red;
+    .subtract {
+      color: red !important;
+    }
   }
 }
