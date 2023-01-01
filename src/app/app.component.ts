@@ -8,6 +8,7 @@ import { GiftResponse, GiftResponseType } from './models';
 import { DIALOG_CLOSE_TIME, DIALOG_OPEN_TIME } from './config';
 import { WelcomeNewPlayerDialogComponent } from './components/dialogs/welcome-new-player-dialog/welcome-new-player-dialog.component';
 import { GameFacade } from './store/facades/gameFacade';
+import { WebsocketService } from './services/websocket/websocket.service';
 
 @Component({
   selector: 'app-root',
@@ -25,6 +26,7 @@ export class AppComponent implements OnInit {
     private readonly playerFacade: PlayerFacade,
     private readonly gameFacade: GameFacade,
     private readonly contexts: ChildrenOutletContexts,
+    private readonly websocket: WebsocketService,
     public dialog: MatDialog
   ) {}
 
@@ -64,5 +66,9 @@ export class AppComponent implements OnInit {
     return this.contexts.getContext('primary')?.route?.snapshot?.data?.[
       'animation'
     ];
+  }
+
+  useSocket() {
+    this.websocket.sendMessage(JSON.stringify({ name: 'Angular App' }));
   }
 }

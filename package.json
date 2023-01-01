@@ -29,9 +29,12 @@
     "@ngrx/store-devtools": "^15.1.0",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
+    "@stomp/stompjs": "^6.1.2",
     "@types/lodash": "^4.14.191",
+    "@types/sockjs-client": "^1.5.1",
     "lodash": "^4.17.21",
     "rxjs": "~7.5.0",
+    "sockjs-client": "^1.6.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
   },
