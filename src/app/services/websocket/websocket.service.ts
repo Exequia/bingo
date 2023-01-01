@@ -13,7 +13,7 @@ export class WebsocketService {
   public msg: any[] = [];
   initializeWebSocketConnection() {
     console.log('init websocket config');
-    const serverUrl = 'http://localhost:8080/gs-guide-websocket';
+    const serverUrl = 'http://localhost:8080/bingo-websocket';
     const ws = new SockJS(serverUrl);
     this.stompClient = Stomp.over(ws);
     const that = this;
@@ -24,10 +24,24 @@ export class WebsocketService {
           that.msg.push(message.body);
         }
       });
+      that.stompClient.subscribe('/topic/game/players', (message: any) => {
+        if (message.body) {
+          console.log('messages', message.body);
+          that.msg.push(message.body);
+        }
+      });
     });
   }
 
   sendMessage(message: any) {
     this.stompClient.send('/app/hello', {}, message);
+  }
+
+  newPlayer(playerName: string) {
+    this.stompClient.send(
+      '/app/players/new',
+      {},
+      JSON.stringify({ name: playerName })
+    );
   }
 }

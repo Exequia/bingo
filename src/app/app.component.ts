@@ -71,4 +71,8 @@ export class AppComponent implements OnInit {
   useSocket() {
     this.websocket.sendMessage(JSON.stringify({ name: 'Angular App' }));
   }
+
+  newPlayer() {
+    this.websocket.newPlayer('Angular App');
+  }
 }
