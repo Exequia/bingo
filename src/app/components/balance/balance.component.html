@@ -1,10 +1,10 @@
 <mat-chip class="player-balance px-3">
-  <span class="balance" [ngClass]="balanceType">
+  <span class="balance" [ngClass]="balanceType?.toLowerCase()">
     <span *ngIf="balanceTypeIcon">{{ balanceTypeIcon }} </span
     >{{ balance | number }}
   </span>
   <mat-icon
-    [ngClass]="balanceType"
+    [ngClass]="balanceType?.toLowerCase()"
     fontIcon="account_balance_wallet"
   ></mat-icon>
 </mat-chip>

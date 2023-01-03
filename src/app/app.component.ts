@@ -36,6 +36,8 @@ export class AppComponent implements OnInit {
     });
   }
 
+
+  
   openDialog(gift: GiftResponse | undefined) {
     if (gift) {
       let component;
@@ -66,13 +68,5 @@ export class AppComponent implements OnInit {
     return this.contexts.getContext('primary')?.route?.snapshot?.data?.[
       'animation'
     ];
-  }
-
-  useSocket() {
-    this.websocket.sendMessage(JSON.stringify({ name: 'Angular App' }));
-  }
-
-  newPlayer() {
-    this.websocket.newPlayer('Angular App');
   }
 }

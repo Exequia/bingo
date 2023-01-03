@@ -1,4 +1,4 @@
-import { GamePlayerStatus, PlayerBase } from '@app/models';
+import { CreatePlayerResponse, GamePlayerStatus, PlayerBase, PlayerResponse } from '@app/models';
 import { createAction, props } from '@ngrx/store';
 
 export const CREATE_PLAYER_NAME = '[Player] Create Player Name';
@@ -7,12 +7,12 @@ export const createNewGamePlayer = createAction(
   props<{ name: string }>()
 );
 
-export const setPlayerNameSuccess = createAction(
+export const createNewGamePlayerSuccess = createAction(
   `${CREATE_PLAYER_NAME} Success`,
-  props<{ name: string }>()
+  props<{ playerResponse: CreatePlayerResponse }>()
 );
 
-export const setPlayerNameFailure = createAction(
+export const createNewGamePlayerFailure = createAction(
   `${CREATE_PLAYER_NAME} Failure`,
   props<{ name: string }>()
 );

@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Dashboard, GamePlayerStatus } from '@app/models';
+import { CreatePlayerResponse, Dashboard, GamePlayerStatus } from '@app/models';
 import { PlayerService } from '@app/services/player/player.service';
 import { PlayerUtils } from '@app/utils/player/player-utils.service';
 import { Store } from '@ngrx/store';
 import {
   changePlayerStatus,
   createNewGamePlayer,
+  createNewGamePlayerSuccess,
   setPlayerAmount,
   setRoundDashboards,
 } from '../actions';
@@ -29,6 +30,10 @@ export class PlayerFacade {
 
   createNewGamePlayer(name: string) {
     this.store.dispatch(createNewGamePlayer({ name }));
+  }
+
+  createNewGamePlayerSuccess(playerResponse: CreatePlayerResponse) {
+    this.store.dispatch(createNewGamePlayerSuccess({ playerResponse }));
   }
 
   setPlayerStatusLazy() {

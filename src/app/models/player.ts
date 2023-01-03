@@ -11,8 +11,8 @@ export interface GamePlayer {
 }
 
 export enum BalanceType {
-  Add = 'add',
-  Subtract = 'subtract',
+  Add = 'ADD',
+  Subtract = 'SUBTRACT',
 }
 
 export enum GamePlayerStatus {
@@ -37,5 +37,5 @@ export interface GiftResponse {
 }
 
 export enum GiftResponseType {
-  credit,
+  credit = "CREDIT",
 }
