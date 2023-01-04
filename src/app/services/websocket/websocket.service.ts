@@ -1,21 +1,18 @@
 import { Injectable } from '@angular/core';
-import { CreatePlayerResponse } from '@app/models';
+import { GamePlayer } from '@app/models';
+import { GamePlayerFacade } from '@app/store/facades/gamePlayersFacade';
 import { PlayerFacade } from '@app/store/facades/playerFacade';
 import { Stomp } from '@stomp/stompjs';
-import { Observable } from 'rxjs';
 import * as SockJS from 'sockjs-client';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WebsocketService {
-  constructor(
-    private readonly playerFacade: PlayerFacade
-  ) {
+  constructor(private readonly playerFacade: PlayerFacade, private readonly gamePlayerFacade: GamePlayerFacade) {
     this.initializeWebSocketConnection();
   }
   public stompClient: any;
-  public msg: any[] = [];
   initializeWebSocketConnection() {
     console.log('init websocket config');
     const serverUrl = 'http://localhost:8080/bingo-websocket';
@@ -25,30 +22,22 @@ export class WebsocketService {
     this.stompClient.connect({}, () => {
       that.stompClient.subscribe('/topic/game/players', (message: any) => {
         if (message.body) {
-          // TODO: gestionar jugadores
-          console.log('messages', message.body);
-          that.msg.push(message.body);
+          this.gamePlayerFacade.loadGamePlayers(JSON.parse(message.body));
         }
       });
     });
   }
-
-  sendMessage(message: any) {
-    this.stompClient.send('/app/hello', {}, message);
-  }
-
-  newPlayer(playerName: string) {
-    this.stompClient.send('/app/players/new', {}, JSON.stringify({ name: playerName }));
-  }
-
+  
   createNewGamePlayer(playerName: string) {
     this.stompClient.subscribe('/user/queue/reply', (message: any) => {
       if (message.body) {
-        console.log('user/queue/reply general subscription', message.body);
-        const localPlayer = JSON.parse(message.body);
-        this.playerFacade.createNewGamePlayerSuccess(localPlayer)
+        this.playerFacade.createNewGamePlayerSuccess(JSON.parse(message.body));
       }
     });
     this.stompClient.send('/app/players/new', {}, JSON.stringify({ name: playerName }));
+  }
+
+  addGamePlayer(gamePlayer: GamePlayer) {
+    this.stompClient.send('/app/game/player', {}, JSON.stringify({ ...gamePlayer }));
   }
 }

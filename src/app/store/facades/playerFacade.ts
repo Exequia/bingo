@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CreatePlayerResponse, Dashboard, GamePlayerStatus } from '@app/models';
+import { CreatePlayerResponse, Dashboard, GamePlayer, GamePlayerStatus } from '@app/models';
 import { PlayerService } from '@app/services/player/player.service';
 import { PlayerUtils } from '@app/utils/player/player-utils.service';
 import { Store } from '@ngrx/store';

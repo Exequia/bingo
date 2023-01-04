@@ -18,24 +18,10 @@ export class NewPlayerComponent {
 
   constructor(
     private readonly playerFacade: PlayerFacade,
-    private readonly routerFacade: RouterFacade,
     public dialog: MatDialog
   ) {}
 
   setName(playerName: string) {
     this.playerFacade.createNewGamePlayer(playerName);
-    this.routerFacade.navigateTo();
-    //   this.openDialog();
-    // }
-
-    // openDialog(): void {
-    //   const dialogRef = this.dialog.open(WelcomeNewPlayerDialogComponent, {
-    //     enterAnimationDuration: DIALOG_OPEN_TIME,
-    //     exitAnimationDuration: DIALOG_CLOSE_TIME,
-    //     data: { welcomePlayerAmmount: this.welcomePlayerAmmount },
-    //   });
-    //   dialogRef.afterClosed().subscribe(() => {
-    //     this.routerFacade.navigateTo();
-    //   }).unsubscribe;
   }
 }

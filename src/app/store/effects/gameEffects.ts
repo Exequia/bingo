@@ -9,48 +9,46 @@ import { PlayerFacade } from '../facades/playerFacade';
 
 @Injectable()
 export class GameEffects {
-  constructor(
-    private readonly actions$: Actions,
-    private readonly backService: BackService,
-    private readonly playerFacade: PlayerFacade
-  ) {}
+  constructor(private readonly actions$: Actions, private readonly backService: BackService, private readonly playerFacade: PlayerFacade) {}
 
   manageGameGift$ = createEffect(() =>
     this.actions$.pipe(
       ofType(manageGameGift),
-      exhaustMap((payload) => {
-        const responseActions = []
+      exhaustMap(payload => {
+        const responseActions = [];
         switch (payload.gift?.type) {
           case GiftResponseType.credit:
             if (isEqual(payload.gift?.balanceType, BalanceType.Add)) {
-              responseActions.push(addCredit({credit: payload.gift?.balance}));
+              responseActions.push(addCredit({ credit: payload.gift?.balance }));
             }
             break;
-  
+
           default:
             break;
         }
-        responseActions.push(saveGameGift({gift: undefined}))
+        responseActions.push(saveGameGift({ gift: undefined }));
         return responseActions;
       })
     )
   );
 
-  shoppingRound$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(shoppingRound),
-      map((payload) => {
-        this.backService
-          .shoppingRound(payload.dashboardAmount)
-          .subscribe((response) => {
-            if (response) {
-              this.playerFacade.setPlayerStatusReady();
-              this.playerFacade.setPlayerAmount(response.playerAmount);
-              this.playerFacade.setPlayerDashboard(response.dashboardsValues);
-            }
-          })
-          .unsubscribe();
-      })
-    ), {dispatch: false}
+  shoppingRound$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(shoppingRound),
+        map(payload => {
+          this.backService
+            .shoppingRound(payload.dashboardAmount)
+            .subscribe(response => {
+              if (response) {
+                this.playerFacade.setPlayerStatusReady();
+                this.playerFacade.setPlayerAmount(response.playerAmount);
+                this.playerFacade.setPlayerDashboard(response.dashboardsValues);
+              }
+            })
+            .unsubscribe();
+        })
+      ),
+    { dispatch: false }
   );
 }

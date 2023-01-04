@@ -18,9 +18,7 @@ export class GameComponent {
   constructor(
     private readonly contexts: ChildrenOutletContexts,
     private readonly gamePlayerFacade: GamePlayerFacade
-  ) {
-    this.gamePlayerFacade.loadGamePlayers();
-  }
+  ) {}
 
   getRouteAnimationData() {
     return this.contexts.getContext('primary')?.route?.snapshot?.data?.[
