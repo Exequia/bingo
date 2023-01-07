@@ -18,16 +18,4 @@ export class RouterFacade {
   navigateTo(url: string = '') {
     this.router.navigate([url]);
   }
-
-  // addNewTodo(todo: string) {
-  //   this.store.dispatch(new AddTodo(todo));
-  // }
-
-  // editTodo(id: string, todo: string) {
-  //   this.store.dispatch(new EditTodo({ id, todo }));
-  // }
-
-  // deleteTodo(id: string) {
-  //   this.store.dispatch(new DeleteTodo(id));
-  // }
 }

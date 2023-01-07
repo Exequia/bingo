@@ -24,26 +24,26 @@ export class GameGuard implements CanActivate {
       withLatestFrom(this.player$),
       map(([gameStatus, player]) => {
         // if (!player.owner) {
-          switch (gameStatus) {
-            case GameStatus.initialized:
-              return currentTarget === URL_GAME;
-            // if (currentTarget !== URL_GAME) {
-            // this.routerFacade.navigateTo(URL_GAME);
-            // }
-            // break;
-            case GameStatus.shopping:
-              return currentTarget === URL_SHOPPING;
-            // if (currentTarget !== URL_SHOPPING) {
-            //   this.routerFacade.navigateTo(URL_SHOPPING);
-            // }
-            // break;
-            default:
-              return currentTarget === URL_HOME;
-            // if (currentTarget !== URL_HOME) {
-            //   this.routerFacade.navigateTo(URL_HOME);
-            // }
-            // break;
-          }
+        switch (gameStatus) {
+          case GameStatus.initialized:
+            return currentTarget === URL_GAME;
+          // if (currentTarget !== URL_GAME) {
+          // this.routerFacade.navigateTo(URL_GAME);
+          // }
+          // break;
+          case GameStatus.shopping:
+            return currentTarget === URL_SHOPPING;
+          // if (currentTarget !== URL_SHOPPING) {
+          //   this.routerFacade.navigateTo(URL_SHOPPING);
+          // }
+          // break;
+          default:
+            return currentTarget === URL_HOME;
+          // if (currentTarget !== URL_HOME) {
+          //   this.routerFacade.navigateTo(URL_HOME);
+          // }
+          // break;
+        }
         // }
         return false;
       })

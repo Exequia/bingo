@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { GameStatus, GiftResponse } from '@app/models';
+import { GameConfig, GameStatus, GiftResponse } from '@app/models';
 import { WebsocketService } from '../websocket/websocket.service';
 
 @Injectable({
@@ -10,5 +10,9 @@ export class GameService {
 
   setGameStatusInit() {
     this.websocket.setGameStatus(GameStatus.initialized);
+  }
+
+  initConfigurationGame(gameConfig: GameConfig) {
+    this.websocket.initConfigurationGame(gameConfig);
   }
 }

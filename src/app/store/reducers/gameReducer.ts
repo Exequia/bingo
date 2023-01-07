@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { initConfigurationGame, saveGameGift, setGameStatus, setRoundDashboards } from '../actions';
+import { initConfigurationGame, saveGameGift, setGameConfig, setGameStatus, setRoundDashboards } from '../actions';
 import { initialGameState } from '../state/gameState';
 
 export const gameReducer = createReducer(
@@ -8,7 +8,7 @@ export const gameReducer = createReducer(
     ...state,
     status: gameStatus,
   })),
-  on(initConfigurationGame, (state, { gameConfig }) => ({
+  on(setGameConfig, (state, { gameConfig }) => ({
     ...state,
     config: gameConfig,
   })),

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { GamePlayer, GameStatus } from '@app/models';
+import { GameConfig, GamePlayer, GameStatus } from '@app/models';
 import { GameFacade } from '@app/store/facades/gameFacade';
 import { GamePlayerFacade } from '@app/store/facades/gamePlayersFacade';
 import { PlayerFacade } from '@app/store/facades/playerFacade';
@@ -32,6 +32,11 @@ export class WebsocketService {
           this.gameFacade.updateGameStatus(JSON.parse(message.body));
         }
       });
+      that.stompClient.subscribe('/topic/game/config', (message: any) => {
+        if (message.body) {
+          this.gameFacade.setGameConfigSuccess(JSON.parse(message.body));
+        }
+      });
     });
   }
 
@@ -54,5 +59,9 @@ export class WebsocketService {
   
   setGameStatus(initialized: GameStatus) {
     this.stompClient.send('/app/game/status', {}, JSON.stringify(initialized));
+  }
+
+  initConfigurationGame(gameConfig: GameConfig) {
+    this.stompClient.send('/app/game/config', {}, JSON.stringify({...gameConfig}));
   }
 }

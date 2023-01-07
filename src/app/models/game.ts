@@ -25,9 +25,9 @@ export interface GameData {
 }
 
 export enum GameVelocity {
-  slow,
-  standard,
-  high
+  slow = "SLOW",
+  standard = "STANDARD",
+  high = "HIGH"
 }
 
 export interface GameRound {

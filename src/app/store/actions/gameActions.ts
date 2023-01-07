@@ -8,15 +8,24 @@ export const setGameStatus = createAction(
 export const setGameStatusInit = createAction(
   '[Game] Set game status init'
 );
+const initConfigGame = '[Game] Init configuration game';
 export const initConfigurationGame = createAction(
-  '[Game] Init configuration game',
+  initConfigGame,
   props<{ gameConfig: GameConfig }>()
 );
-export const initConfigurationGameSuccess = createAction(
-  '[Game] Init configuration game Success'
+export const initGameConfigSuccess = createAction(
+  `${initConfigGame} Success`,
+  props<{ gameConfig: GameConfig }>()
 );
-export const initConfigurationGameFailure = createAction(
-  '[Game] Init configuration game Failure'
+export const initGameConfigFailure = createAction(
+  `${initConfigGame} Failure`
+);
+export const setGameStatusShopping = createAction(
+  '[Game] Set game status shopping'
+);
+export const setGameConfig = createAction(
+  '[Game] Set game config',
+  props<{ gameConfig: GameConfig }>()
 );
 export const shoppingRound = createAction(
   '[Game] Shopping Round',
@@ -39,6 +48,6 @@ export const setRoundDashboards = createAction(
 
 export const gameStartLoadingActions = [initConfigurationGame];
 export const gameStopLoadingActions = [
-  initConfigurationGameSuccess,
-  initConfigurationGameFailure,
+  initGameConfigSuccess,
+  initGameConfigFailure,
 ];

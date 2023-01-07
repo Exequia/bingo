@@ -4,10 +4,11 @@ import { GameConfig, GameStatus, GiftResponse } from '@app/models';
 import { Store } from '@ngrx/store';
 import {
   initConfigurationGame,
-  initConfigurationGameSuccess,
+  initGameConfigSuccess,
   manageGameGift,
   playerShopping,
   saveGameGift,
+  setGameConfig,
   setGameStatus as updateGameStatus,
   setGameStatusInit,
 } from '../actions';
@@ -31,20 +32,26 @@ export class GameFacade {
     this.store.dispatch(setGameStatusInit());
   }
 
-  setGameStatusShopping() {
-    this.updateGameStatus(GameStatus.shopping);
-    this.routerFacade.navigateTo(`/${URL_GAME}/${URL_SHOPPING}`);
-  }
+  // setGameStatusShopping() {
+  //   this.updateGameStatus(GameStatus.shopping);
+  //   this.routerFacade.navigateTo(`/${URL_GAME}/${URL_SHOPPING}`);
+  // }
 
   updateGameStatus(gameStatus: GameStatus) {
     this.store.dispatch(updateGameStatus({ gameStatus }));
   }
 
   initGameConfig(gameConfig: GameConfig) {
-    //TODO: ARE - CONECTAR CON SERVIDOR Y REDIRIGIR TODOS LOS JUGADORES
     this.store.dispatch(initConfigurationGame({ gameConfig }));
-    this.store.dispatch(initConfigurationGameSuccess());
   }
+
+  setGameConfigSuccess(gameConfig: GameConfig) {
+    this.store.dispatch(initGameConfigSuccess({gameConfig}));
+  }
+
+  // setGameConfig(gameConfig: GameConfig) {
+  //   this.store.dispatch(setGameConfig({ gameConfig }));
+  // }
 
   playerShopping(dashboardAmount: number) {
     this.store.dispatch(playerShopping({ dashboardAmount }));
