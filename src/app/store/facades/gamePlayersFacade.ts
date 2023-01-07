@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { loadGamePlayers } from '../entities/game-player.actions';
+import { deleteGamePlayer, loadGamePlayers } from '../entities/game-player.actions';
 import { selectAllgamePlayers } from '../entities/game-player.reducer';
 import { AppState } from '../state';
 import { GamePlayer } from '@app/models';
@@ -17,5 +17,9 @@ export class GamePlayerFacade {
 
   loadGamePlayers(gamePlayers: GamePlayer[]) {
     this.store.dispatch(loadGamePlayers({ gamePlayers }));
+  }
+
+  disconnectPlayer(playerId: string) {
+    this.store.dispatch(deleteGamePlayer({id: playerId}));
   }
 }

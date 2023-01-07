@@ -1,12 +1,11 @@
 import { AbstractControl } from '@angular/forms';
-import { Dashboard } from './dashboard';
 
 export enum GameStatus {
   pending,
   initialized,
   shopping,
   started,
-  finished,
+  finished
 }
 
 export interface GameConfig {
@@ -15,6 +14,9 @@ export interface GameConfig {
 
 export interface GameConfigForm {
   velocity: AbstractControl<GameVelocity | null>;
+  rounds: AbstractControl<number | null>;
+  minPlayers: AbstractControl<number | null>;
+  maxPlayers: AbstractControl<number | null>;
 }
 
 export interface GameData {
@@ -25,7 +27,7 @@ export interface GameData {
 export enum GameVelocity {
   slow,
   standard,
-  high,
+  high
 }
 
 export interface GameRound {
@@ -37,7 +39,6 @@ export interface GameResults {
   playerIdLineWinner: number;
   playerIdRoundWinner: number;
 }
-
 
 export interface RoundResponse {
   id: string;

@@ -11,4 +11,8 @@ export class GamePlayersService {
   addPlayer(gamePlayer: GamePlayer) {
     this.websocket.addGamePlayer(gamePlayer);
   }
+
+  disconnectPlayer(gamePlayerId: string) {
+    this.websocket.disconnectGamePlayer(gamePlayerId);
+  }
 }

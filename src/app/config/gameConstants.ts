@@ -1,1 +1,6 @@
 export const GAME_DASHBOARD_LIMIT_CELL = 8;
+export const GAME_ROUNDS_MIN = 1;
+export const GAME_ROUNDS_DEFAULT = 3;
+export const GAME_MIN_PLAYERS_DEFAULT = 5;
+export const GAME_MAX_PLAYERS_DEFAULT = GAME_MIN_PLAYERS_DEFAULT * 3;
+

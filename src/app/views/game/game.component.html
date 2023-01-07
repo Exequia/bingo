@@ -1,13 +1,6 @@
 <div class="new-game">
   <div>
-    <h1>{{ "game.formTitle" | translate }}</h1>
-    <div [@routeSlide]="getRouteAnimationData()">
-      <router-outlet></router-outlet>
-    </div>
-  </div>
-  <div class="mt-5">
-    <mat-divider></mat-divider>
-    <h1 class="mt-3" matBadgeOverlap="false">
+    <h1 matBadgeOverlap="false">
       <span>
         {{ "game.roomTitle" | translate }}
       </span>
@@ -19,5 +12,12 @@
       </span>
     </h1>
     <app-game-room [gamePlayers]="gamePlayers$ | async"></app-game-room>
+  </div>
+  <div class="mt-3">
+    <mat-divider></mat-divider>
+    <h1 class="mt-3" >{{ "game.formTitle" | translate }}</h1>
+    <div [@routeSlide]="getRouteAnimationData()">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>

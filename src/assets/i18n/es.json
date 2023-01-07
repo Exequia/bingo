@@ -3,7 +3,9 @@
     "confirm": "Confirmar",
     "start": "Comenzar",
     "error": {
-      "required": "El campo debe rellenarse"
+      "required": "El campo debe rellenarse",
+      "min": "El valor minimo debe ser {{value}}",
+      "max": "El valor máximo debe ser {{value}}"
     }
   },
   "toolbar": {
@@ -26,6 +28,9 @@
       "1": "Normal",
       "2": "Rapida"
     },
+    "rounds": "Rondas",
+    "minPlayers": "Minimo de jugadores",
+    "maxPlayers": "Máximo de jugadores",
     "roomTitle": "Jugadores en linea"
   },
   "dialogs":{

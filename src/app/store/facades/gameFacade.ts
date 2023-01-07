@@ -40,6 +40,7 @@ export class GameFacade {
   }
 
   initGameConfig(gameConfig: GameConfig) {
+    //TODO: ARE - CONECTAR CON SERVIDOR Y REDIRIGIR TODOS LOS JUGADORES
     this.store.dispatch(initConfigurationGame({ gameConfig }));
     this.store.dispatch(initConfigurationGameSuccess());
   }

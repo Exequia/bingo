@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { Update } from '@ngrx/entity';
-import { GamePlayer, PlayerBase } from '@app/models';
+import { GamePlayer } from '@app/models';
 
 export const loadGamePlayers = createAction(
   '[GamePlayer/API] Load GamePlayers',

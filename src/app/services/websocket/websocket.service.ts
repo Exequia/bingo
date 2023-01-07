@@ -27,7 +27,7 @@ export class WebsocketService {
       });
     });
   }
-  
+
   createNewGamePlayer(playerName: string) {
     this.stompClient.subscribe('/user/queue/reply', (message: any) => {
       if (message.body) {
@@ -39,5 +39,9 @@ export class WebsocketService {
 
   addGamePlayer(gamePlayer: GamePlayer) {
     this.stompClient.send('/app/game/player', {}, JSON.stringify({ ...gamePlayer }));
+  }
+
+  disconnectGamePlayer(gamePlayerId: string) {
+    this.stompClient.send('/app/game/disconect', {}, gamePlayerId);
   }
 }

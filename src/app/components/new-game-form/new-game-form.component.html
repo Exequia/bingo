@@ -1,30 +1,43 @@
 <div class="new-game-form">
-  <form
-    class="display-grid"
-    [formGroup]="gameConfigForm"
-    (ngSubmit)="onSubmit()"
-  >
+  <form class="display-grid" [formGroup]="gameConfigForm" (ngSubmit)="onSubmit()">
     <mat-form-field appearance="fill">
-      <mat-label> {{ "game.velocity" | translate }}</mat-label>
+      <mat-label>{{ 'game.velocity' | translate }}</mat-label>
       <mat-select [formControl]="velocityControl" name="velocity">
-        <mat-option
-          *ngFor="let velocity of gameVelocityValues"
-          [value]="velocity"
-        >
-          {{ "game.velocities." + velocity | translate }}
+        <mat-option *ngFor="let velocity of gameVelocityValues" [value]="velocity">
+          {{ 'game.velocities.' + velocity | translate }}
         </mat-option>
       </mat-select>
+      <mat-error *ngIf="gameConfigForm.get('velocity')?.invalid">
+        {{ 'common.error.required' | translate }}
+      </mat-error>
     </mat-form-field>
 
-    <button
-      mat-fab
-      extended
-      color="primary"
-      [disabled]="!gameConfigForm.valid"
-      type="submit"
-      autofocus="true"
-    >
-      {{ "common.start" | translate }}
+    <mat-form-field appearance="fill">
+      <mat-label>{{ 'game.rounds' | translate }}</mat-label>
+      <input matInput type="number" [min]="roundsMinValue" [formControl]="roundsControl" name="rounds" />
+      <mat-error *ngIf="rounds?.invalid && (rounds?.dirty || rounds?.touched)">
+        {{ getRoundsErrorMessage() }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>{{ 'game.minPlayers' | translate }}</mat-label>
+      <input matInput type="number" [min]="minPlayersValue" [max]="minPlayersMaxValue" [formControl]="minPlayersControl" name="minPlayers" />
+      <mat-error *ngIf="minPlayers?.invalid && (minPlayers?.dirty || minPlayers?.touched)">
+        {{ getMinPlayerErrorMessage() }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>{{ 'game.maxPlayers' | translate }}</mat-label>
+      <input matInput type="number" [min]="minPlayersValue" [formControl]="maxPlayersControl" name="maxPlayers" />
+      <mat-error *ngIf="maxPlayers?.invalid && (maxPlayers?.dirty || maxPlayers?.touched)">
+        {{ getMaxPlayerErrorMessage() }}
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-fab extended color="primary" [disabled]="!gameConfigForm.valid" type="submit" autofocus="true">
+      {{ 'common.start' | translate }}
     </button>
   </form>
 </div>
