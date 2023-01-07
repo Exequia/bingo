@@ -1,23 +1,14 @@
 import { Injectable } from '@angular/core';
-import { GiftResponse } from '@app/models';
+import { GameStatus, GiftResponse } from '@app/models';
+import { WebsocketService } from '../websocket/websocket.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GameService {
-  constructor() { }
+  constructor(private readonly websocket: WebsocketService) { }
 
-  // manageGameGift(gift: GiftResponse | undefined): Observable<> {
-    
-  //   switch (gift?.type) {
-  //     case GiftResponseType.credit:
-  //       component = WelcomeNewPlayerDialogComponent;
-  //       data = { welcomePlayerAmmount: gift.balance };
-  //       break;
-
-  //     default:
-  //       break;
-  //   }
-
-  // }
+  setGameStatusInit() {
+    this.websocket.setGameStatus(GameStatus.initialized);
+  }
 }

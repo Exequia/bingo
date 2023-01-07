@@ -8,7 +8,6 @@ import { GiftResponse, GiftResponseType } from './models';
 import { DIALOG_CLOSE_TIME, DIALOG_OPEN_TIME } from './config';
 import { WelcomeNewPlayerDialogComponent } from './components/dialogs/welcome-new-player-dialog/welcome-new-player-dialog.component';
 import { GameFacade } from './store/facades/gameFacade';
-import { WebsocketService } from './services/websocket/websocket.service';
 import { GamePlayerFacade } from './store/facades/gamePlayersFacade';
 
 @Component({
@@ -67,7 +66,6 @@ export class AppComponent implements OnInit, OnDestroy {
     return this.contexts.getContext('primary')?.route?.snapshot?.data?.['animation'];
   }
 
-  
   @HostListener('window:beforeunload')
   @HostListener('window:unload')
   ngOnDestroy(): void {

@@ -5,6 +5,9 @@ export const setGameStatus = createAction(
   '[Game] Set game status',
   props<{ gameStatus: GameStatus }>()
 );
+export const setGameStatusInit = createAction(
+  '[Game] Set game status init'
+);
 export const initConfigurationGame = createAction(
   '[Game] Init configuration game',
   props<{ gameConfig: GameConfig }>()

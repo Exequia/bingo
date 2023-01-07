@@ -1,17 +1,20 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { GAME_MAX_PLAYERS_DEFAULT, GAME_MIN_PLAYERS_DEFAULT, GAME_ROUNDS_DEFAULT, GAME_ROUNDS_MIN } from '@app/config';
-import { GameConfig, GameConfigForm, GameVelocity } from '@app/models';
+import { GameConfig, GameConfigForm, GameVelocity, PlayerBase } from '@app/models';
 import { UtilsService } from '@app/services/utils/utils.service';
 import { TranslateService } from '@ngx-translate/core';
+import { forEach, keys } from 'lodash';
+import { Observable } from 'rxjs';
+import { OnDestroyObserverComponent } from '../on-destroy-observer/on-destroy-observer.component';
 
 @Component({
   selector: 'app-new-game-form',
   templateUrl: './new-game-form.component.html',
   styleUrls: ['./new-game-form.component.scss']
 })
-export class NewGameFormComponent {
-  @Input() gameConfig: GameConfig | undefined | null = undefined;
+export class NewGameFormComponent extends OnDestroyObserverComponent implements OnInit {
+  @Input() localPlayer$: Observable<PlayerBase | undefined | null> | undefined = undefined;
   @Output() gameConfigEmmit: EventEmitter<GameConfig> = new EventEmitter<GameConfig>();
 
   gameVelocityValues = this.utils.getEnumNumberValues(GameVelocity);
@@ -44,15 +47,25 @@ export class NewGameFormComponent {
     return this.gameConfigForm.get('maxPlayers');
   }
 
-  constructor(private readonly utils: UtilsService, private translate: TranslateService) {}
+  constructor(private readonly utils: UtilsService, private translate: TranslateService) {
+    super()
+  }
 
+  ngOnInit(): void {
+    this.localPlayer$?.subscribe(localPlayer => {
+      if (!localPlayer?.owner) {
+        const controlsKeys = keys(this.gameConfigForm.controls);
+        forEach(controlsKeys, controlKey => this.gameConfigForm?.get(controlKey)?.disable());
+      }
+    });
+  }
 
   getRoundsErrorMessage(): string {
     if (this.rounds?.hasError('required')) {
       return this.translate.instant('common.error.required');
     }
     if (this.rounds?.hasError('min')) {
-      return this.translate.instant('common.error.min', {value: this.minPlayersValue});
+      return this.translate.instant('common.error.min', { value: this.minPlayersValue });
     }
     return '';
   }
@@ -62,10 +75,10 @@ export class NewGameFormComponent {
       return this.translate.instant('common.error.required');
     }
     if (this.minPlayers?.hasError('min')) {
-      return this.translate.instant('common.error.min', {value: this.minPlayersValue});
+      return this.translate.instant('common.error.min', { value: this.minPlayersValue });
     }
     if (this.minPlayers?.hasError('max')) {
-      return this.translate.instant('common.error.max', {value: this.roundsMinValue});
+      return this.translate.instant('common.error.max', { value: this.roundsMinValue });
     }
     return '';
   }
@@ -75,11 +88,11 @@ export class NewGameFormComponent {
       return this.translate.instant('common.error.required');
     }
     if (this.maxPlayers?.hasError('min')) {
-      return this.translate.instant('common.error.min', {value: this.minPlayersValue});
+      return this.translate.instant('common.error.min', { value: this.minPlayersValue });
     }
     return '';
   }
-  
+
   onSubmit() {
     if (this.gameConfigForm.valid) {
       this.gameConfigEmmit.emit(this.gameConfigForm?.value as GameConfig);

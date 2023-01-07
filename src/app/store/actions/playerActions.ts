@@ -41,3 +41,13 @@ export const changePlayerStatus = createAction(
   '[Player] Change Status',
   props<{ playerStatus: GamePlayerStatus }>()
 );
+
+export const setPlayerOwner = createAction(
+  '[Player] Set Player Owner'
+);
+
+export const removePlayerOwner = createAction(
+  '[Player] Remove Player Owner'
+);
+
+

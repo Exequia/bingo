@@ -1,10 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import {
-  addCredit,
-  changePlayerStatus,
-  saveLocalPlayer,
-  setPlayerAmount,
-} from '../actions';
+import { addCredit, changePlayerStatus, removePlayerOwner, saveLocalPlayer, setPlayerAmount, setPlayerOwner } from '../actions';
 import { initialPlayerState } from '../state';
 
 export const playerReducer = createReducer(
@@ -13,18 +8,26 @@ export const playerReducer = createReducer(
     ...state,
     id: player.id,
     name: player.name,
-    amount: player.amount,
+    amount: player.amount
   })),
   on(changePlayerStatus, (state, { playerStatus }) => ({
     ...state,
-    status: playerStatus,
+    status: playerStatus
   })),
   on(addCredit, (state, { credit }) => ({
     ...state,
-    amount: state.amount || 0 + credit,
+    amount: state.amount || 0 + credit
   })),
   on(setPlayerAmount, (state, { amount }) => ({
     ...state,
-    amount,
+    amount
+  })),
+  on(setPlayerOwner, state => ({
+    ...state,
+    owner: true
+  })),
+  on(removePlayerOwner, state => ({
+    ...state,
+    owner: false
   }))
 );

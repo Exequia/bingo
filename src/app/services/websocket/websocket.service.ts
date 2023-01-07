@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { GamePlayer } from '@app/models';
+import { GamePlayer, GameStatus } from '@app/models';
+import { GameFacade } from '@app/store/facades/gameFacade';
 import { GamePlayerFacade } from '@app/store/facades/gamePlayersFacade';
 import { PlayerFacade } from '@app/store/facades/playerFacade';
 import { Stomp } from '@stomp/stompjs';
@@ -9,12 +10,13 @@ import * as SockJS from 'sockjs-client';
   providedIn: 'root'
 })
 export class WebsocketService {
-  constructor(private readonly playerFacade: PlayerFacade, private readonly gamePlayerFacade: GamePlayerFacade) {
+
+  constructor(private readonly playerFacade: PlayerFacade, private readonly gamePlayerFacade: GamePlayerFacade, private readonly gameFacade: GameFacade) {
     this.initializeWebSocketConnection();
   }
+
   public stompClient: any;
   initializeWebSocketConnection() {
-    console.log('init websocket config');
     const serverUrl = 'http://localhost:8080/bingo-websocket';
     const ws = new SockJS(serverUrl);
     this.stompClient = Stomp.over(ws);
@@ -23,6 +25,11 @@ export class WebsocketService {
       that.stompClient.subscribe('/topic/game/players', (message: any) => {
         if (message.body) {
           this.gamePlayerFacade.loadGamePlayers(JSON.parse(message.body));
+        }
+      });
+      that.stompClient.subscribe('/topic/game/status', (message: any) => {
+        if (message.body) {
+          this.gameFacade.updateGameStatus(JSON.parse(message.body));
         }
       });
     });
@@ -43,5 +50,9 @@ export class WebsocketService {
 
   disconnectGamePlayer(gamePlayerId: string) {
     this.stompClient.send('/app/game/disconect', {}, gamePlayerId);
+  }
+  
+  setGameStatus(initialized: GameStatus) {
+    this.stompClient.send('/app/game/status', {}, JSON.stringify(initialized));
   }
 }

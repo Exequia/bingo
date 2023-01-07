@@ -2,6 +2,7 @@ export interface PlayerBase {
   id?: string;
   name?: string;
   amount?: number;
+  owner?: boolean;
 }
 
 export interface GamePlayer {

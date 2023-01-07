@@ -8,7 +8,8 @@ import {
   manageGameGift,
   playerShopping,
   saveGameGift,
-  setGameStatus,
+  setGameStatus as updateGameStatus,
+  setGameStatusInit,
 } from '../actions';
 import { selectGameConfig, selectGameStatus } from '../selectors/gameSelectors';
 import { AppState } from '../state';
@@ -27,16 +28,16 @@ export class GameFacade {
   ) {}
 
   setGameStatusInit() {
-    this.setGameStatus(GameStatus.initialized);
+    this.store.dispatch(setGameStatusInit());
   }
 
   setGameStatusShopping() {
-    this.setGameStatus(GameStatus.shopping);
+    this.updateGameStatus(GameStatus.shopping);
     this.routerFacade.navigateTo(`/${URL_GAME}/${URL_SHOPPING}`);
   }
 
-  private setGameStatus(gameStatus: GameStatus) {
-    this.store.dispatch(setGameStatus({ gameStatus }));
+  updateGameStatus(gameStatus: GameStatus) {
+    this.store.dispatch(updateGameStatus({ gameStatus }));
   }
 
   initGameConfig(gameConfig: GameConfig) {

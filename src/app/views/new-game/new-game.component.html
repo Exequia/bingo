@@ -1,4 +1,4 @@
 <app-new-game-form
-  [gameConfig]="gameConfig$ | async"
+  [localPlayer$]="localPlayer$"
   (gameConfigEmmit)="startGame($event)"
 ></app-new-game-form>
