@@ -1,0 +1,21 @@
+@import 'app/styles/variables';
+
+.cell {
+  border-style: outset;
+
+  &.empty {
+    background: $empty;
+    background: $empty-gradient;
+  }
+
+  &.waiting {
+    color: white;
+    background: $waiting;
+    background: $waiting-gradient;
+  }
+
+  &.checked {
+    background: $checked;
+    background: $checked-gradient;
+  }
+}
