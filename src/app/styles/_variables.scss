@@ -1,7 +1,10 @@
 $balance: rgb(255, 225, 104);
-$balance-gradient: linear-gradient(
-  185deg,
-  rgba(255, 225, 104, 1) 0%,
-  rgba(255, 226, 0, 1) 40%,
-  rgba(255, 183, 0, 1) 100%
-);
+$balance-gradient: linear-gradient(180deg, rgba(255, 225, 104, 1) 0%, rgba(255, 226, 0, 1) 40%, rgba(255, 183, 0, 1) 100%);
+$empty: rgb(164, 175, 176);
+$empty-gradient: linear-gradient(170deg, rgba(164, 175, 176, 1) 0%, rgba(54, 69, 75, 1) 80%, rgba(30, 30, 31, 1) 100%);
+$waiting: rgb(53,155,255);
+$waiting-gradient: linear-gradient(160deg,rgba(53,155,255,1) 0%, rgba(97,132,255,1) 65%, rgba(0,48,214,1) 100%);
+$waiting: rgb(53,155,255);
+$waiting-gradient: linear-gradient(160deg,rgba(53,155,255,1) 0%, rgba(97,132,255,1) 65%, rgba(0,48,214,1) 100%);
+$checked: rgb(137,217,54);
+$checked-gradient: linear-gradient(160deg, rgba(137,217,54,1) 0%, rgba(86,159,20,1) 65%, rgba(10,59,1,1) 100%);

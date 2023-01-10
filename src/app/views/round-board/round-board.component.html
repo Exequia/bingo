@@ -1,0 +1,4 @@
+<div class="round-board">
+  <h1 class="mt-3">{{ 'game.roundDashboards' | translate }}</h1>
+  <app-dashboard *ngFor="let roundDashboard of roundDashboards$ | async" [dashboard]="roundDashboard"></app-dashboard>
+</div>

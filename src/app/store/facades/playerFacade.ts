@@ -7,7 +7,6 @@ import {
   changePlayerStatus,
   createNewGamePlayer,
   createNewGamePlayerSuccess,
-  setPlayerAmount,
   setRoundDashboards,
 } from '../actions';
 import { selectPlayerFeature } from '../reducers';
@@ -50,10 +49,6 @@ export class PlayerFacade {
 
   private changePlayerStatus(playerStatus: GamePlayerStatus) {
     this.store.dispatch(changePlayerStatus({ playerStatus }));
-  }
-
-  setPlayerAmount(amount: number) {
-    this.store.dispatch(setPlayerAmount({ amount }));
   }
 
   setPlayerDashboard(dashboardsValues: number[][][]) {

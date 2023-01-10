@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Dashboard } from '@app/models';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
+  @Input() dashboard: Dashboard | undefined;
 
 }

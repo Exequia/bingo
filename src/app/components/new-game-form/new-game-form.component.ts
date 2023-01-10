@@ -17,7 +17,7 @@ export class NewGameFormComponent extends OnDestroyObserverComponent implements 
   @Input() localPlayer$: Observable<PlayerBase | undefined | null> | undefined = undefined;
   @Output() gameConfigEmmit: EventEmitter<GameConfig> = new EventEmitter<GameConfig>();
 
-  gameVelocityValues = this.utils.getEnumNumberValues(GameVelocity);
+  gameVelocityValues = this.utils.getEnumValues(GameVelocity);
   velocityControl = new FormControl<GameVelocity>(GameVelocity.high, [Validators.required]);
   roundsControl = new FormControl<number>(GAME_ROUNDS_DEFAULT, [Validators.required]);
   roundsMinValue = GAME_ROUNDS_MIN;

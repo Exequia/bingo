@@ -1,9 +1,11 @@
 import { AbstractControl } from '@angular/forms';
+import { RoundDashboardResponse } from './dashboard';
+import { PlayerBase } from './player';
 
 export enum GameStatus {
   pending = 'PENDING',
   initialized = 'INITIALIZED',
-  shopping = 'SHOOPING',
+  shopping = 'SHOPPING',
   started = 'STARTED',
   finished = 'FINISHED'
 }
@@ -25,9 +27,9 @@ export interface GameData {
 }
 
 export enum GameVelocity {
-  slow = "SLOW",
-  standard = "STANDARD",
-  high = "HIGH"
+  slow = 'SLOW',
+  standard = 'STANDARD',
+  high = 'HIGH'
 }
 
 export interface GameRound {
@@ -40,8 +42,12 @@ export interface GameResults {
   playerIdRoundWinner: number;
 }
 
-export interface RoundResponse {
-  id: string;
-  dashboardsValues: number[][][];
-  playerAmount: number;
+export interface ShoppingRequest {
+  playerId: string;
+  dashboardAmount: number;
+}
+
+export interface ShoppingResponse {
+  dashboards: RoundDashboardResponse[];
+  player: PlayerBase;
 }

@@ -30,6 +30,9 @@ import { ShoppingComponent } from './views/shopping/shopping.component';
 import { WelcomeNewPlayerDialogComponent } from './components/dialogs/welcome-new-player-dialog/welcome-new-player-dialog.component';
 import { BalanceComponent } from './components/balance/balance.component';
 import { NewGameComponent } from './views/new-game/new-game.component';
+import { RoundBoardComponent } from './views/round-board/round-board.component';
+import { DashboardRowComponent } from './components/dashboard-row/dashboard-row.component';
+import { DashboardRowCellComponent } from './components/dashboard-row-cell/dashboard-row-cell.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -53,6 +56,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     WelcomeNewPlayerDialogComponent,
     BalanceComponent,
     NewGameComponent,
+    RoundBoardComponent,
+    DashboardRowComponent,
+    DashboardRowCellComponent,
   ],
   imports: [
     BrowserModule,

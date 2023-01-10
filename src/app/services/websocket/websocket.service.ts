@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { GameConfig, GamePlayer, GameStatus } from '@app/models';
+import { GameConfig, GamePlayer, GameStatus, ShoppingRequest } from '@app/models';
 import { GameFacade } from '@app/store/facades/gameFacade';
 import { GamePlayerFacade } from '@app/store/facades/gamePlayersFacade';
 import { PlayerFacade } from '@app/store/facades/playerFacade';
@@ -10,7 +10,6 @@ import * as SockJS from 'sockjs-client';
   providedIn: 'root'
 })
 export class WebsocketService {
-
   constructor(private readonly playerFacade: PlayerFacade, private readonly gamePlayerFacade: GamePlayerFacade, private readonly gameFacade: GameFacade) {
     this.initializeWebSocketConnection();
   }
@@ -56,12 +55,21 @@ export class WebsocketService {
   disconnectGamePlayer(gamePlayerId: string) {
     this.stompClient.send('/app/game/disconect', {}, gamePlayerId);
   }
-  
+
   setGameStatus(initialized: GameStatus) {
     this.stompClient.send('/app/game/status', {}, JSON.stringify(initialized));
   }
 
   initConfigurationGame(gameConfig: GameConfig) {
-    this.stompClient.send('/app/game/config', {}, JSON.stringify({...gameConfig}));
+    this.stompClient.send('/app/game/config', {}, JSON.stringify({ ...gameConfig }));
+  }
+
+  shoppingRound(shoppingRequest: ShoppingRequest) {
+    this.stompClient.send('/app/game/shopping', {}, JSON.stringify({ ...shoppingRequest }));
+    this.stompClient.subscribe('/user/queue/roundDashboards', (message: any) => {
+      if (message.body) {
+        this.gameFacade.shoppingRoundSuccess(JSON.parse(message.body));
+      }
+    });
   }
 }

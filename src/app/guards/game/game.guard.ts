@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { URL_GAME, URL_HOME, URL_SHOPPING } from '@app/config/routerConstants';
+import { URL_BINGO, URL_GAME, URL_HOME, URL_READY, URL_SHOPPING } from '@app/config/routerConstants';
 import { GameStatus } from '@app/models';
 import { GameFacade } from '@app/store/facades/gameFacade';
 import { RouterFacade } from '@app/store/facades/routerFacade';
@@ -18,7 +18,6 @@ export class GameGuard implements CanActivate {
   constructor(private readonly gameFacade: GameFacade, private readonly routerFacade: RouterFacade, private readonly playerFacade: PlayerFacade) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    console.log(route, state);
     const currentTarget = get(route, 'routeConfig.path');
     return this.gameStatus$.pipe(
       withLatestFrom(this.player$),
@@ -32,11 +31,13 @@ export class GameGuard implements CanActivate {
           // }
           // break;
           case GameStatus.shopping:
-            return currentTarget === URL_SHOPPING;
+            return [URL_SHOPPING, URL_READY].includes(currentTarget || '');
           // if (currentTarget !== URL_SHOPPING) {
           //   this.routerFacade.navigateTo(URL_SHOPPING);
           // }
           // break;
+          case GameStatus.started:
+            return currentTarget === URL_BINGO;
           default:
             return currentTarget === URL_HOME;
           // if (currentTarget !== URL_HOME) {

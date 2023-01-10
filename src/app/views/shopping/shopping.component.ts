@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DASHBOARD_AMOUNT_MIN, DASHBOARD_MIN_PRICE } from '@app/config';
 import { BalanceType } from '@app/models';
 import { GameFacade } from '@app/store/facades/gameFacade';
+import { PlayerFacade } from '@app/store/facades/playerFacade';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -10,9 +12,10 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./shopping.component.scss'],
 })
 export class ShoppingComponent implements OnInit {
+  localPlayer$ = this.playerFacade.player$;
   balanceType = BalanceType.Subtract;
-  dashboardAmountMin = 1;
-  dashboardPrice = 5;
+  dashboardAmountMin = DASHBOARD_AMOUNT_MIN;
+  dashboardPrice: number = DASHBOARD_MIN_PRICE;
   bill = this.dashboardAmountMin * this.dashboardPrice;
   shoppingForm = new FormGroup({
     dashboardAmount: new FormControl<number>(this.dashboardAmountMin, [
@@ -22,8 +25,14 @@ export class ShoppingComponent implements OnInit {
 
   constructor(
     private readonly translate: TranslateService,
-    private readonly gameFacade: GameFacade
-  ) {}
+    private readonly gameFacade: GameFacade,
+    private readonly playerFacade: PlayerFacade
+  ) {
+    this.localPlayer$.subscribe(player => {
+      this.dashboardPrice = player.dashboardPrice || DASHBOARD_MIN_PRICE;
+      this.bill = this.dashboardAmountMin * this.dashboardPrice;
+    })
+  }
 
   ngOnInit(): void {
     this.shoppingForm

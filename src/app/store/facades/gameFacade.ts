@@ -1,20 +1,17 @@
 import { Injectable } from '@angular/core';
-import { URL_GAME, URL_SHOPPING } from '@app/config';
-import { GameConfig, GameStatus, GiftResponse } from '@app/models';
+import { GameConfig, GameStatus, GiftResponse, ShoppingResponse } from '@app/models';
 import { Store } from '@ngrx/store';
 import {
   initConfigurationGame,
   initGameConfigSuccess,
   manageGameGift,
   playerShopping,
-  saveGameGift,
-  setGameConfig,
-  setGameStatus as updateGameStatus,
+  updateGameStatus,
   setGameStatusInit,
+  shoppingRoundSuccess,
 } from '../actions';
-import { selectGameConfig, selectGameStatus } from '../selectors/gameSelectors';
+import { selectGameConfig, selectGameStatus, selectRoundDashboards } from '../selectors/gameSelectors';
 import { AppState } from '../state';
-import { RouterFacade } from './routerFacade';
 
 @Injectable({
   providedIn: 'root',
@@ -22,20 +19,15 @@ import { RouterFacade } from './routerFacade';
 export class GameFacade {
   gameStatus$ = this.store.select(selectGameStatus);
   gameConfig$ = this.store.select(selectGameConfig);
+  roundDashboards$ = this.store.select(selectRoundDashboards);
 
   constructor(
-    private readonly store: Store<AppState>,
-    private readonly routerFacade: RouterFacade
+    private readonly store: Store<AppState>
   ) {}
 
   setGameStatusInit() {
     this.store.dispatch(setGameStatusInit());
   }
-
-  // setGameStatusShopping() {
-  //   this.updateGameStatus(GameStatus.shopping);
-  //   this.routerFacade.navigateTo(`/${URL_GAME}/${URL_SHOPPING}`);
-  // }
 
   updateGameStatus(gameStatus: GameStatus) {
     this.store.dispatch(updateGameStatus({ gameStatus }));
@@ -49,15 +41,15 @@ export class GameFacade {
     this.store.dispatch(initGameConfigSuccess({gameConfig}));
   }
 
-  // setGameConfig(gameConfig: GameConfig) {
-  //   this.store.dispatch(setGameConfig({ gameConfig }));
-  // }
-
   playerShopping(dashboardAmount: number) {
     this.store.dispatch(playerShopping({ dashboardAmount }));
   }
 
   manageGameGift(gift: GiftResponse | undefined) {
     this.store.dispatch(manageGameGift({ gift }));
+  }
+  
+  shoppingRoundSuccess(shoppingResponse: ShoppingResponse) {
+    this.store.dispatch(shoppingRoundSuccess({ shoppingResponse }));
   }
 }

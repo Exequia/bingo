@@ -4,3 +4,5 @@ export const GAME_ROUNDS_DEFAULT = 3;
 export const GAME_MIN_PLAYERS_DEFAULT = 5;
 export const GAME_MAX_PLAYERS_DEFAULT = GAME_MIN_PLAYERS_DEFAULT * 3;
 
+export const DASHBOARD_MIN_PRICE = 5;
+export const DASHBOARD_AMOUNT_MIN = 1;

@@ -15,7 +15,6 @@ export class NewGameComponent {
   constructor(private readonly gameFacade: GameFacade, private readonly playerFace: PlayerFacade) {}
 
   startGame(gameConfig: GameConfig) {
-    // this.gameFacade.setGameStatusShopping();
     this.gameFacade.initGameConfig(gameConfig);
   }
 }

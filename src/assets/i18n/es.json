@@ -24,14 +24,16 @@
     "formTitle": "Configuración de opciones de la partida",
     "velocity": "Velocidad",
     "velocities": {
-      "0": "Lenta",
-      "1": "Normal",
-      "2": "Rapida"
+      "SLOW": "Lenta",
+      "STANDARD": "Normal",
+      "HIGH": "Rapida"
     },
     "rounds": "Rondas",
     "minPlayers": "Minimo de jugadores",
     "maxPlayers": "Máximo de jugadores",
-    "roomTitle": "Jugadores en linea"
+    "roomTitle": "Jugadores en linea",
+    "shopping": "Compra de cartones para jugar esta ronda",
+    "roundDashboards": "Cartones de la ronda"
   },
   "dialogs":{
     "welcomePlayer": {

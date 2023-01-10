@@ -3,6 +3,9 @@ export interface PlayerBase {
   name?: string;
   amount?: number;
   owner?: boolean;
+  dashboardPrice?: number;
+  dashboardBonusTwoPrice?: number;
+  dashboardBonusThreePrice?: number;
 }
 
 export interface GamePlayer {
@@ -17,9 +20,9 @@ export enum BalanceType {
 }
 
 export enum GamePlayerStatus {
-  lazy,
-  shopping,
-  ready
+  lazy = "LAZY",
+  shopping = "SHOPPING",
+  ready = "READY"
 }
 
 export interface CreatePlayerResponse {
@@ -27,8 +30,7 @@ export interface CreatePlayerResponse {
   gift?: GiftResponse;
 }
 
-export interface PlayerResponse extends GamePlayer {
-  amount?: number;
+export interface PlayerResponse extends PlayerBase {
 }
 
 export interface GiftResponse {

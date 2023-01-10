@@ -1,14 +1,24 @@
-.player-summary {
-  background: rgb(87, 246, 255);
-  background: linear-gradient(
-    90deg,
-    rgba(87, 246, 255, 1) 0%,
-    rgba(63, 145, 181, 1) 20%,
-    rgba(63, 81, 181, 1) 100%
-  );
-  color: white;
-  width: max-content;
-  -webkit-border-radius: 50px;
-  -moz-border-radius: 50px;
-  border-radius: 50px;
+@import 'app/styles/variables';
+
+:host ::ng-deep {
+  .player-summary {
+    background: rgb(87, 246, 255);
+    background: linear-gradient(90deg, rgba(87, 246, 255, 1) 0%, rgba(63, 145, 181, 1) 20%, rgba(63, 81, 181, 1) 100%);
+
+    .mat-mdc-chip-action-label {
+      display: flex !important;
+      align-items: center !important;
+    }
+
+    span {
+      color: white !important;
+      display: flex;
+      align-items: center;
+
+      .status {
+          font-size: 15px;
+          margin-top: 11%;
+      }
+    }
+  }
 }

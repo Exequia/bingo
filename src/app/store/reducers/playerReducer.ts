@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { addCredit, changePlayerStatus, removePlayerOwner, saveLocalPlayer, setPlayerAmount, setPlayerOwner } from '../actions';
+import { addCredit, changePlayerStatus, removePlayerOwner, saveLocalPlayer, setPlayerOwner } from '../actions';
 import { initialPlayerState } from '../state';
 
 export const playerReducer = createReducer(
@@ -8,7 +8,10 @@ export const playerReducer = createReducer(
     ...state,
     id: player.id,
     name: player.name,
-    amount: player.amount
+    amount: player.amount,
+    dashboardPrice: player.dashboardPrice,
+    dashboardBonusTwoPrice: player.dashboardBonusTwoPrice,
+    dashboardBonusThreePrice: player.dashboardBonusThreePrice
   })),
   on(changePlayerStatus, (state, { playerStatus }) => ({
     ...state,
@@ -17,10 +20,6 @@ export const playerReducer = createReducer(
   on(addCredit, (state, { credit }) => ({
     ...state,
     amount: state.amount || 0 + credit
-  })),
-  on(setPlayerAmount, (state, { amount }) => ({
-    ...state,
-    amount
   })),
   on(setPlayerOwner, state => ({
     ...state,

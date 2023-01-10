@@ -1,4 +1,2 @@
-<app-new-game-form
-  [localPlayer$]="localPlayer$"
-  (gameConfigEmmit)="startGame($event)"
-></app-new-game-form>
+<h1 class="mt-3">{{ 'game.formTitle' | translate }}</h1>
+<app-new-game-form [localPlayer$]="localPlayer$" (gameConfigEmmit)="startGame($event)"></app-new-game-form>

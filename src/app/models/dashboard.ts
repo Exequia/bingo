@@ -1,5 +1,6 @@
 export interface Dashboard {
   rows: DashboardRow[];
+  status?: string;
 }
 
 export interface DashboardRow {
@@ -20,7 +21,17 @@ export interface DashboardRowCell {
 }
 
 export enum DashboardRowCellStatus {
-  empty,
-  waiting,
-  checked,
+  empty = "empty",
+  waiting = 'waiting',
+  checked = 'checked',
+}
+
+export interface RoundDashboardResponse {
+  lines: RoundDashboardLinesResponse[],
+  status?: string
+}
+
+export interface RoundDashboardLinesResponse {
+  values: number[],
+  status?: string
 }
