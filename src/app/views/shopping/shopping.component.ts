@@ -17,6 +17,7 @@ export class ShoppingComponent implements OnInit {
   dashboardAmountMin = DASHBOARD_AMOUNT_MIN;
   dashboardPrice: number = DASHBOARD_MIN_PRICE;
   bill = this.dashboardAmountMin * this.dashboardPrice;
+  dashboardAmountMax: number = DASHBOARD_AMOUNT_MIN;
   shoppingForm = new FormGroup({
     dashboardAmount: new FormControl<number>(this.dashboardAmountMin, [
       Validators.required,
@@ -31,6 +32,7 @@ export class ShoppingComponent implements OnInit {
     this.localPlayer$.subscribe(player => {
       this.dashboardPrice = player.dashboardPrice || DASHBOARD_MIN_PRICE;
       this.bill = this.dashboardAmountMin * this.dashboardPrice;
+      this.dashboardAmountMax = (player.amount || 0) / this.dashboardPrice;
     })
   }
 

@@ -24,7 +24,6 @@ export class PlayerFacade {
   constructor(
     private readonly store: Store<AppState>,
     private readonly playerUtils: PlayerUtils,
-    private readonly routerFacade: RouterFacade
   ) {}
 
   createNewGamePlayer(name: string) {
