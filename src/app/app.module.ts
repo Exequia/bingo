@@ -33,6 +33,9 @@ import { NewGameComponent } from './views/new-game/new-game.component';
 import { RoundBoardComponent } from './views/round-board/round-board.component';
 import { DashboardRowComponent } from './components/dashboard-row/dashboard-row.component';
 import { DashboardRowCellComponent } from './components/dashboard-row-cell/dashboard-row-cell.component';
+import { BingoComponent } from './views/bingo/bingo.component';
+import { RoundValuesComponent } from './views/round-values/round-values.component';
+import { RoundSummaryComponent } from './components/round-summary/round-summary.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -59,6 +62,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     RoundBoardComponent,
     DashboardRowComponent,
     DashboardRowCellComponent,
+    BingoComponent,
+    RoundValuesComponent,
+    RoundSummaryComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,40 @@
+.round-summary {
+  background-image: url('~/src/assets/images/dash.jpg');
+  background-color: brown;
+  min-height: 20vh;
+
+  border-radius: 20px;
+  border: 1px solid brown;
+
+  min-width: 374px;
+  max-width: 22%;
+
+  .cell {
+    color: #5a0000;
+    border: 1px solid #220808;
+    background-color: #5a0000;
+    padding: 0;
+    border-radius: 20px;
+    margin: 0.5px 2px;
+    height: 30px;
+  }
+
+  .ball {
+    border-radius: 15px;
+    padding: 0;
+    max-width: 34px;
+    position: relative;
+
+    display: flex;
+    text-align: center !important;
+    flex-direction: column;
+    height: 28px;
+    padding-top: 13%;
+
+    &.checked {
+      color: #ff8100;
+      background-color: #ffdc9d;
+      border: 1px solid #5a0000;
+    }
+  }
+}

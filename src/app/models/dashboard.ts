@@ -9,21 +9,30 @@ export interface DashboardRow {
 }
 
 export enum DashboardRowStatus {
-  standard,
-  close,
-  almost,
-  completed,
+  standard = "standard",
+  close = "close",
+  almost = "almost",
+  completed = "completed",
 }
 
 export interface DashboardRowCell {
   value: number | undefined;
   status: DashboardRowCellStatus;
+  action?: DashboardRowCellActions;
 }
 
 export enum DashboardRowCellStatus {
   empty = "empty",
   waiting = 'waiting',
   checked = 'checked',
+}
+
+export enum DashboardRowCellActions {
+  hide = 'hide',
+  enter = 'enter',
+  show = 'show',
+  set = 'set',
+  completed = 'completed',
 }
 
 export interface RoundDashboardResponse {

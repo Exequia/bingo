@@ -27,6 +27,7 @@ import { PageNotFoundComponent } from './views/page-not-found/page-not-found.com
 import { ShoppingComponent } from './views/shopping/shopping.component';
 import { NewGameComponent } from './views/new-game/new-game.component';
 import { RoundBoardComponent } from './views/round-board/round-board.component';
+import { BingoComponent } from './views/bingo/bingo.component';
 
 const routes: Routes = [
   {
@@ -64,7 +65,7 @@ const routes: Routes = [
       }
     ]
   },
-  { path: URL_BINGO, component: GameComponent, canActivate: [PlayerGuard, GameGuard], data: { animation: URL_BINGO_PAGE }, pathMatch: 'full' },
+  { path: URL_BINGO, component: BingoComponent, canActivate: [PlayerGuard, GameGuard], data: { animation: URL_BINGO_PAGE }, pathMatch: 'full' },
   {
     path: URL_PLAYER,
     component: NewPlayerComponent,
