@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { URL_BINGO, URL_GAME, URL_READY, URL_SHOPPING } from '@app/config';
-import { BalanceType, Dashboard, GamePlayerStatus, GameStatus, GiftResponseType, ShoppingResponse } from '@app/models';
+import { BalanceType, Dashboard, GamePlayerStatus, GameStatusEnum, GiftResponseType, ShoppingResponse } from '@app/models';
 import { GameService } from '@app/services/game/game.service';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { isEqual } from 'lodash';
@@ -87,32 +87,33 @@ export class GameEffects {
     this.actions$.pipe(
       ofType(updateGameStatus),
       map(payload => {
-        switch (payload?.gameStatus) {
-          case GameStatus.pending:
+        const gameStatus = payload?.gameStatus;
+        switch (gameStatus.status) {
+          case GameStatusEnum.pending:
             setTimeout(() => {
               this.routerFacade.navigateTo(`/${URL_GAME}`);
             }, 100);
             break;
 
-          case GameStatus.initialized:
+          case GameStatusEnum.initialized:
             setTimeout(() => {
               this.routerFacade.navigateTo(`/${URL_GAME}`);
             }, 100);
             break;
 
-          case GameStatus.shopping:
+          case GameStatusEnum.shopping:
             setTimeout(() => {
               this.routerFacade.navigateTo(`/${URL_GAME}/${URL_SHOPPING}`);
             }, 100);
             break;
 
-          case GameStatus.started:
+          case GameStatusEnum.started:
             setTimeout(() => {
               this.routerFacade.navigateTo(`/${URL_BINGO}`);
             }, 100);
             break;
         }
-        return setGameStatus({ gameStatus: payload?.gameStatus });
+        return setGameStatus({ gameStatus });
       })
     )
   );

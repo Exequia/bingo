@@ -2,7 +2,7 @@ import { AbstractControl } from '@angular/forms';
 import { RoundDashboardResponse } from './dashboard';
 import { PlayerBase } from './player';
 
-export enum GameStatus {
+export enum GameStatusEnum {
   pending = 'PENDING',
   initialized = 'INITIALIZED',
   shopping = 'SHOPPING',
@@ -12,6 +12,11 @@ export enum GameStatus {
 
 export interface GameConfig {
   velocity: GameVelocity;
+}
+
+export interface GameStatus {
+  status: GameStatusEnum;
+  currentRound: number;
 }
 
 export interface GameConfigForm {

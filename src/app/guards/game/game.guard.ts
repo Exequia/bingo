@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { URL_BINGO, URL_GAME, URL_HOME, URL_READY, URL_SHOPPING } from '@app/config/routerConstants';
-import { GameStatus } from '@app/models';
+import { GameStatusEnum } from '@app/models';
 import { GameFacade } from '@app/store/facades/gameFacade';
 import { RouterFacade } from '@app/store/facades/routerFacade';
 import { map, Observable, withLatestFrom } from 'rxjs';
@@ -23,20 +23,20 @@ export class GameGuard implements CanActivate {
       withLatestFrom(this.player$),
       map(([gameStatus, player]) => {
         // if (!player.owner) {
-        switch (gameStatus) {
-          case GameStatus.initialized:
+        switch (gameStatus.status) {
+          case GameStatusEnum.initialized:
             return currentTarget === URL_GAME;
           // if (currentTarget !== URL_GAME) {
           // this.routerFacade.navigateTo(URL_GAME);
           // }
           // break;
-          case GameStatus.shopping:
+          case GameStatusEnum.shopping:
             return [URL_SHOPPING, URL_READY].includes(currentTarget || '');
           // if (currentTarget !== URL_SHOPPING) {
           //   this.routerFacade.navigateTo(URL_SHOPPING);
           // }
           // break;
-          case GameStatus.started:
+          case GameStatusEnum.started:
             return currentTarget === URL_BINGO;
           default:
             return currentTarget === URL_HOME;

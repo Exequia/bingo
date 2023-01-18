@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { GameConfig, GamePlayer, GameStatus, ShoppingRequest } from '@app/models';
+import { GameConfig, GamePlayer, GameStatusEnum, ShoppingRequest } from '@app/models';
 import { GameFacade } from '@app/store/facades/gameFacade';
 import { GamePlayerFacade } from '@app/store/facades/gamePlayersFacade';
 import { PlayerFacade } from '@app/store/facades/playerFacade';
@@ -56,7 +56,7 @@ export class WebsocketService {
     this.stompClient.send('/app/game/disconect', {}, gamePlayerId);
   }
 
-  setGameStatus(initialized: GameStatus) {
+  setGameStatus(initialized: GameStatusEnum) {
     this.stompClient.send('/app/game/status', {}, JSON.stringify(initialized));
   }
 
