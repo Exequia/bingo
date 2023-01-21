@@ -20,9 +20,9 @@ export enum BalanceType {
 }
 
 export enum GamePlayerStatus {
-  lazy = "LAZY",
-  shopping = "SHOPPING",
-  ready = "READY"
+  lazy = 'LAZY',
+  shopping = 'SHOPPING',
+  ready = 'READY'
 }
 
 export interface CreatePlayerResponse {
@@ -30,8 +30,7 @@ export interface CreatePlayerResponse {
   gift?: GiftResponse;
 }
 
-export interface PlayerResponse extends PlayerBase {
-}
+export interface PlayerResponse extends PlayerBase {}
 
 export interface GiftResponse {
   type: GiftResponseType;
@@ -41,4 +40,17 @@ export interface GiftResponse {
 
 export enum GiftResponseType {
   credit = 'CREDIT'
+}
+
+export interface RoundData {
+  newValue: number;
+  values: number[];
+  status: RoundStatusEnum;
+  line: boolean;
+  bingo: boolean;
+}
+
+export enum RoundStatusEnum {
+  playing = 'PLAYING',
+  checking = 'CHECKING'
 }

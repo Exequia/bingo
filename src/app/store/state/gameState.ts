@@ -1,4 +1,4 @@
-import { Dashboard, GamePlayer, GiftResponse } from '@app/models';
+import { Dashboard, GamePlayer, GiftResponse, RoundData } from '@app/models';
 import { GameConfig, GameStatus, GameStatusEnum } from '../../models/game';
 
 export interface GameState {
@@ -6,6 +6,7 @@ export interface GameState {
   config?: GameConfig;
   gift?: GiftResponse;
   roundDashboards?: Dashboard[];
+  round?: RoundData;
 }
 
 export const initialGameState: GameState = {

@@ -35,7 +35,10 @@
     "shopping": "Compra de cartones para jugar esta ronda",
     "roundDashboards": "Cartones de la ronda"
   },
-  "dialogs":{
+  "round": {
+    "currentRound": "Ronda actual"
+  },
+  "dialogs": {
     "welcomePlayer": {
       "title": "¡Gracias por registrarte!",
       "welcomeGift": "Regalo de bienvenida",

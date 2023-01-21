@@ -1,7 +1,10 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { DashboardRow, DashboardRowCell, DashboardRowCellActions, DashboardRowCellStatus, DashboardRowStatus } from '@app/models';
+import { GameFacade } from '@app/store/facades/gameFacade';
 import { find, isEqual } from 'lodash';
+import { OnDestroyObserverComponent } from '../on-destroy-observer/on-destroy-observer.component';
+import { filter, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-round-summary',
@@ -21,13 +24,31 @@ import { find, isEqual } from 'lodash';
     ])
   ]
 })
-export class RoundSummaryComponent {
+export class RoundSummaryComponent extends OnDestroyObserverComponent implements AfterViewInit {
   rowsNum: number = 9;
   colsNum: number = 10;
   rows: DashboardRow[] = [];
   values: number[] = [];
 
-  constructor() {
+  gameRoundData$ = this.gameFacade.roundData$;
+
+  constructor(private readonly gameFacade: GameFacade) {
+    super();
+    this.initDashboardValues();
+  }
+
+  ngAfterViewInit(): void {
+    this.gameRoundData$
+      .pipe(
+        takeUntil(this.destroyed$),
+        filter(data => !!data)
+      )
+      .subscribe(roundData => {
+        this.addNewValue(roundData?.newValue || 0);
+      });
+  }
+
+  private initDashboardValues() {
     for (let rowIndex = 0; rowIndex < this.rowsNum; rowIndex++) {
       this.rows.push({
         status: DashboardRowStatus.standard,
@@ -42,29 +63,9 @@ export class RoundSummaryComponent {
         )
       });
     }
-    this.initRandomValues();
-  }
-
-  initRandomValues() {
-    const interval = setInterval(() => {
-      if (this.values.length === 90) {
-        clearInterval(interval);
-      } else {
-        this.addNewValue(this.getRandomValue());
-      }
-    }, 500);
-  }
-
-  getRandomValue(): number {
-    let value;
-    do {
-      value = Math.floor(Math.random() * (this.rowsNum * 10)) + 1;
-    } while (this.values.includes(value));
-    return value;
   }
 
   addNewValue(newValue: number) {
-    this.values.push(newValue);
     let match: DashboardRowCell | undefined;
     do {
       this.rows.forEach(row => {

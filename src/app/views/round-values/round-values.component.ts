@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GameFacade } from '@app/store/facades/gameFacade';
 
 @Component({
   selector: 'app-round-values',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./round-values.component.scss']
 })
 export class RoundValuesComponent {
+  gameStatus$ = this.gameFacade.gameStatus$;
 
+  constructor(private readonly gameFacade: GameFacade) {}
 }
