@@ -14,8 +14,35 @@
     background: $waiting-gradient;
   }
 
+  &.match {
+    background: $match;
+    background: $match-gradient;
+
+    --border-size: 3px;
+    --border-angle: 0turn;
+
+    //TODO: IMPROVE ANIMATIONS AND COLORS
+    background-image: conic-gradient(from var(--border-angle), $waiting, $waiting 50%, $waiting), conic-gradient(from var(--border-angle), transparent 10%, white, $waiting);
+    background-size: calc(100% - (var(--border-size) * 2)) calc(100% - (var(--border-size) * 2)), cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    animation: bg-spin 3s linear infinite;
+    @keyframes bg-spin {
+      to {
+        --border-angle: 1turn;
+      }
+    }
+  }
+
   &.checked {
     background: $checked;
     background: $checked-gradient;
   }
+}
+
+@property --border-angle {
+  syntax: '<angle>';
+  inherits: true;
+  initial-value: 0turn;
 }

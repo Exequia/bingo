@@ -1,21 +1,18 @@
 <div class="welcomePlayerDialog">
-  <h1 mat-dialog-title>{{ "dialogs.welcomePlayer.title" | translate }}</h1>
+  <h1 mat-dialog-title>{{ 'dialogs.welcomePlayer.title' | translate }}</h1>
   <div mat-dialog-content>
     <h2>
-      {{ "dialogs.welcomePlayer.welcomeGift" | translate }}
+      {{ 'dialogs.welcomePlayer.welcomeGift' | translate }}
     </h2>
     <p translate>dialogs.welcomePlayer.detailGift</p>
     <div class="balance">
-      <app-balance
-        [balance]="data.welcomePlayerAmmount"
-        [balanceType]="balanceType"
-      ></app-balance>
+      <app-balance [balance]="data.welcomePlayerAmmount" [balanceType]="balanceType"></app-balance>
     </div>
   </div>
   <div mat-dialog-actions>
-    <button mat-fab extended color="accent" mat-dialog-close cdkFocusInitial>
+    <button mat-fab extended color="primary" mat-dialog-close cdkFocusInitial>
       <mat-icon>savings</mat-icon>
-      {{ "dialogs.welcomePlayer.getGift" | translate }}
+      {{ 'dialogs.welcomePlayer.getGift' | translate }}
     </button>
   </div>
 </div>

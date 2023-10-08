@@ -8,5 +8,4 @@ import { Dashboard } from '@app/models';
 })
 export class DashboardComponent {
   @Input() dashboard: Dashboard | undefined;
-
 }

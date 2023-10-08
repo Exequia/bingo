@@ -1,4 +1,4 @@
-import { Dashboard, GamePlayer, GiftResponse, RoundData } from '@app/models';
+import { Dashboard, GiftResponse, RoundData } from '@app/models';
 import { GameConfig, GameStatus, GameStatusEnum } from '../../models/game';
 
 export interface GameState {

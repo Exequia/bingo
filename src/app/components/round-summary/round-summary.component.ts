@@ -82,6 +82,7 @@ export class RoundSummaryComponent extends OnDestroyObserverComponent implements
       newValue.action = DashboardRowCellActions.show;
       setTimeout(() => {
         newValue.action = DashboardRowCellActions.set;
+        this.gameFacade.updatePlayerDashboards(newValue);
       }, 1500);
     }, 800);
   }

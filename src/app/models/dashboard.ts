@@ -9,10 +9,10 @@ export interface DashboardRow {
 }
 
 export enum DashboardRowStatus {
-  standard = "standard",
-  close = "close",
-  almost = "almost",
-  completed = "completed",
+  standard = 'standard',
+  close = 'close',
+  almost = 'almost',
+  completed = 'completed'
 }
 
 export interface DashboardRowCell {
@@ -22,9 +22,10 @@ export interface DashboardRowCell {
 }
 
 export enum DashboardRowCellStatus {
-  empty = "empty",
+  empty = 'empty',
   waiting = 'waiting',
-  checked = 'checked',
+  match = 'match',
+  checked = 'checked'
 }
 
 export enum DashboardRowCellActions {
@@ -32,15 +33,15 @@ export enum DashboardRowCellActions {
   enter = 'enter',
   show = 'show',
   set = 'set',
-  completed = 'completed',
+  completed = 'completed'
 }
 
 export interface RoundDashboardResponse {
-  lines: RoundDashboardLinesResponse[],
-  status?: string
+  lines: RoundDashboardLinesResponse[];
+  status?: string;
 }
 
 export interface RoundDashboardLinesResponse {
-  values: number[],
-  status?: string
+  values: number[];
+  status?: string;
 }

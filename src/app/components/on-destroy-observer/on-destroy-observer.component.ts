@@ -5,7 +5,6 @@ import { ReplaySubject } from 'rxjs';
   selector: 'app-on-destroy-observer',
   template: ''
 })
-//TODO: ARE - Incluir en appModule?
 export abstract class OnDestroyObserverComponent implements OnDestroy {
   protected destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
 

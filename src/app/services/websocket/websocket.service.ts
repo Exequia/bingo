@@ -38,7 +38,7 @@ export class WebsocketService {
       });
       that.stompClient.subscribe('/topic/game/round', (message: any) => {
         if (message.body) {
-          this.gameFacade.setGameRoundData(JSON.parse(message.body));
+          this.gameFacade.updateGameRoundData(JSON.parse(message.body));
         }
       });
     });

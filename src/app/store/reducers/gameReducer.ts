@@ -1,6 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
-import { saveGameGift, setGameConfig, setGameRoundData, setGameStatus, setRoundDashboards } from '../actions';
+import { saveGameGift, setGameConfig, setGameRoundData, setGameStatus, setRoundDashboards, updateCellStatus } from '../actions';
 import { initialGameState } from '../state/gameState';
+import { cloneDeep } from 'lodash';
 
 export const gameReducer = createReducer(
   initialGameState,
@@ -23,5 +24,10 @@ export const gameReducer = createReducer(
   on(setGameRoundData, (state, { roundData }) => ({
     ...state,
     round: roundData
-  }))
+  })),
+  on(updateCellStatus, (state, { dashboardIndex, rowIndex, matchCellIndex, cellStatus }) => {
+    const updatedState = cloneDeep(state);
+    updatedState.roundDashboards![dashboardIndex].rows[rowIndex].cells[matchCellIndex].status = cellStatus;
+    return updatedState;
+  })
 );

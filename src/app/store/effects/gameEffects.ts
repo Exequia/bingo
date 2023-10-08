@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { URL_BINGO, URL_GAME, URL_READY, URL_SHOPPING } from '@app/config';
-import { BalanceType, Dashboard, GamePlayerStatus, GameStatusEnum, GiftResponseType, ShoppingResponse } from '@app/models';
+import { BalanceType, Dashboard, GamePlayerStatus, GameStatusEnum, GiftResponseType } from '@app/models';
 import { GameService } from '@app/services/game/game.service';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { isEqual } from 'lodash';
@@ -14,23 +14,28 @@ import {
   saveGameGift,
   saveLocalPlayer,
   setGameConfig,
+  setGameRoundData,
   setGameStatus,
   setGameStatusInit,
   setPlayerOwner,
   setRoundDashboards,
   shoppingRound,
   shoppingRoundSuccess,
-  updateGameStatus
+  updateGameRoundData,
+  updateGameStatus,
+  updatePlayerDashboards
 } from '../actions';
 import { PlayerFacade } from '../facades/playerFacade';
 import { RouterFacade } from '../facades/routerFacade';
 import { UtilsService } from '@app/services/utils/utils.service';
+import { GameFacade } from '../facades/gameFacade';
 
 @Injectable()
 export class GameEffects {
   constructor(
     private readonly actions$: Actions,
     private readonly playerFacade: PlayerFacade,
+    private readonly gameFacade: GameFacade,
     private readonly gameService: GameService,
     private readonly routerFacade: RouterFacade,
     private readonly utilsService: UtilsService
@@ -141,5 +146,24 @@ export class GameEffects {
         return [saveLocalPlayer({ player: shoppingResponse?.player }), changePlayerStatus({ playerStatus: GamePlayerStatus.ready }), setRoundDashboards({ gameRoundDashboards })];
       })
     )
+  );
+
+  updateGameRoundData$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(updateGameRoundData),
+      map(payload => setGameRoundData({ roundData: payload?.roundData }))
+    )
+  );
+
+  updatePlayerDashboards$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(updatePlayerDashboards),
+        withLatestFrom(this.gameFacade.roundDashboards$),
+        map(([payload, roundDashboards]) => {
+          this.gameService.updateGameRoundData(payload.newValue, roundDashboards);
+        })
+      ),
+    { dispatch: false }
   );
 }

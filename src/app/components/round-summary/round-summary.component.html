@@ -1,9 +1,11 @@
 <div class="round-summary px-4 py-2">
   <div class="row" *ngFor="let row of rows" [ngClass]="row?.status">
-    <div class="col cell" *ngFor="let cell of row?.cells" [ngClass]="cell?.status">
-      <div class="ball" *ngIf="cell?.action !== 'hide'" [ngClass]="cell?.status" [@ballAnimation]="cell?.action">
-        {{ cell?.value }}
+    <ng-container *ngIf="row?.cells">
+      <div class="col cell" *ngFor="let cell of row?.cells" [ngClass]="cell?.status">
+        <div class="ball" *ngIf="cell?.action !== 'hide'" [ngClass]="cell?.status" [@ballAnimation]="cell?.action">
+          {{ cell?.value }}
+        </div>
       </div>
-    </div>
+    </ng-container>
   </div>
 </div>

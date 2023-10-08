@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { GameConfig, GameStatus, GiftResponse, RoundData, ShoppingResponse } from '@app/models';
+import { DashboardRowCell, GameConfig, GameStatus, GiftResponse, RoundData, ShoppingResponse } from '@app/models';
 import { Store } from '@ngrx/store';
 import {
   initConfigurationGame,
@@ -9,7 +9,8 @@ import {
   updateGameStatus,
   setGameStatusInit,
   shoppingRoundSuccess,
-  setGameRoundData
+  updateGameRoundData,
+  updatePlayerDashboards
 } from '../actions';
 import { selectGameConfig, selectGameStatus, selectRoundDashboards, selectRoundData } from '../selectors/gameSelectors';
 import { AppState } from '../state';
@@ -53,7 +54,11 @@ export class GameFacade {
     this.store.dispatch(shoppingRoundSuccess({ shoppingResponse }));
   }
 
-  setGameRoundData(roundData: RoundData) {
-    this.store.dispatch(setGameRoundData({ roundData }));
+  updateGameRoundData(roundData: RoundData) {
+    this.store.dispatch(updateGameRoundData({ roundData }));
+  }
+
+  updatePlayerDashboards(newValue: DashboardRowCell) {
+    this.store.dispatch(updatePlayerDashboards({ newValue }));
   }
 }
